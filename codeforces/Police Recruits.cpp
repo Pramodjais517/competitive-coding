@@ -13,25 +13,8 @@ int main()
    cin>>t;
    while(t--)
   {
-  	ll n;
-  	cin>>n;
-  	ll zero=0;
-  	while(n%10==0)
-  	{
-  		n=n/10;
-  	    zero++;	
-	}
-	ll x=1;
-	int count=0;
-	while(x<n)
-	{
-		x*=2;
-		count++;
-	}
-	if((x==n and zero>=count) or x==1)
-	cout<<"Yes\n";
-	else
-	cout<<"No\n";
+
+
   }
 return 0;
 }

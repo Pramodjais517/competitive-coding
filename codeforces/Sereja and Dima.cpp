@@ -9,13 +9,42 @@ using namespace std;
 
 int main()
 {
-   ll t;
-   cin>>t;
-   while(t--)
-  {
-
-
-  }
+ll n;
+cin>>n;
+ll arr[n];
+f(i,0,n,1)
+cin>>arr[i];
+int serja=0,dima=0;
+int term=0;
+for(int i=0,j=n-1;i<=j;)
+{
+	if(arr[i]>arr[j])
+	{
+	if(term==1)
+	{
+	serja+=arr[i];	
+	term=0;
+	}
+	 else{
+	 	dima+=arr[i];
+	 	term=1;
+	 }
+	 i++;
+	}
+	else{
+	if(term==1)
+	{
+	serja+=arr[j];	
+	term=0;
+	}
+	 else{
+	 	dima+=arr[j];
+	 	term=1;
+	 }
+	 j--;
+	}
+}
+cout<<dima<<" "<<serja;
 return 0;
 }
 

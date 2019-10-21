@@ -9,9 +9,17 @@ using namespace std;
 
 int main()
 {
-   ll t;
-   cin>>t;
-   ll l,r,m;
+int n;
+cin>>n;
+string s;
+cin>>s;
+int count=0;
+f(i,1,s.length(),1)
+{
+	if(s[i]==s[i-1])
+	count++;
+}
+cout<<count;
 return 0;
 }
 
