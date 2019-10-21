@@ -11,20 +11,24 @@ int main()
 {
 ll n;
 cin>>n;
-ll arr[n];
+ll ar[n];
 f(i,0,n,1)
-cin>>arr[i];
-ll pol=0,count=0;
+cin>>ar[i];
+ll t;
+cin>>t;
+ll a,b,c;
+sort(ar,ar+n);
 f(i,0,n,1)
 {
-	if(arr[i]!=-1)
-	pol+=arr[i];
-	else if(pol>0 and arr[i]==-1)
-	pol-=1;
-	else
-	count++;
+	f(j,i+1,n,1)
+	{
+		f(k,j+1,n,1)
+		{
+			if(ar[i]+ar[j]+ar[k]==t)
+			cout<<ar[i]<<", "<<ar[j]<<" and "<<ar[k]<<"\n";
+		}
+	}
 }
-cout<<count;
 return 0;
 }
 

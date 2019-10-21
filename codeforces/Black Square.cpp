@@ -9,22 +9,23 @@ using namespace std;
 
 int main()
 {
-ll n;
-cin>>n;
-ll arr[n];
-f(i,0,n,1)
-cin>>arr[i];
-ll pol=0,count=0;
-f(i,0,n,1)
+int a,b,c,d;
+cin>>a>>b>>c>>d;
+string s;
+cin>>s;
+ll w=0;
+f(i,0,s.length(),1)
 {
-	if(arr[i]!=-1)
-	pol+=arr[i];
-	else if(pol>0 and arr[i]==-1)
-	pol-=1;
+	if(s[i]=='1')
+	w+=a;
+	else if(s[i]=='2')
+	w+=b;
+	else if(s[i]=='3')
+	w+=c;
 	else
-	count++;
+	w+=d;
 }
-cout<<count;
+cout<<w;
 return 0;
 }
 

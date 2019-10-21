@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
+#define ull unsigned long long
 #define rs reserve
 #define pb push_back
 #define mp make_pair
@@ -9,22 +10,13 @@ using namespace std;
 
 int main()
 {
-ll n;
-cin>>n;
-ll arr[n];
-f(i,0,n,1)
-cin>>arr[i];
-ll pol=0,count=0;
-f(i,0,n,1)
-{
-	if(arr[i]!=-1)
-	pol+=arr[i];
-	else if(pol>0 and arr[i]==-1)
-	pol-=1;
-	else
-	count++;
-}
-cout<<count;
+   ll t;
+   cin>>t;
+   while(t--)
+  {
+
+
+  }
 return 0;
 }
 
