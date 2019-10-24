@@ -14,21 +14,24 @@ int main()
    cin>>t;
    while(t--)
   {
-  	ll n;
+  	int n;
   	cin>>n;
-  	ll a[n];
+  	int arr[n];
   	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
-  	f(i,0,n,1)
+  	cin>>arr[i];
+  	sort(arr,arr+n);
+  	int flag=0;
+  	f(i,1,n,1)
   	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
-	}
-	cout<<ms<<"\n";
+  		if(abs(arr[i-1]-arr[i])==1)
+  		{
+		 flag=1;
+     	}
+	  }
+   if(flag==0)
+   cout<<1<<"\n";
+   else
+   cout<<2<<"\n";
   }
 return 0;
 }

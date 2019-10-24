@@ -10,26 +10,15 @@ using namespace std;
 
 int main()
 {
-   ll t;
-   cin>>t;
-   while(t--)
-  {
-  	ll n;
-  	cin>>n;
-  	ll a[n];
-  	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
-  	f(i,0,n,1)
-  	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
-	}
-	cout<<ms<<"\n";
-  }
+string s,r;
+cin>>s>>r;
+int pos=0;
+f(i,0,r.length(),1)
+{
+	if(r[i]==s[pos])
+	pos++;
+}
+cout<<pos+1;
 return 0;
 }
 

@@ -10,26 +10,25 @@ using namespace std;
 
 int main()
 {
-   ll t;
-   cin>>t;
-   while(t--)
-  {
-  	ll n;
-  	cin>>n;
-  	ll a[n];
-  	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
-  	f(i,0,n,1)
-  	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
+ll arr[4];
+f(i,0,4,1)
+cin>>arr[i];
+ll count=0,ans=0;
+f(i,0,4,1)
+{
+	count=0;
+	f(j,i+1,4,1)
+	{
+		if(arr[i]==arr[j] and arr[j]!=0)
+		{
+		count++;
+		arr[j]=0;
+	    }
 	}
-	cout<<ms<<"\n";
-  }
+	if(count>=1)
+	ans+=count;
+}
+cout<<ans;
 return 0;
 }
 

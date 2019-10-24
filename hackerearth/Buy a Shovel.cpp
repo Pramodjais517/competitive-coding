@@ -10,26 +10,31 @@ using namespace std;
 
 int main()
 {
-   ll t;
-   cin>>t;
-   while(t--)
-  {
-  	ll n;
-  	cin>>n;
-  	ll a[n];
-  	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
-  	f(i,0,n,1)
-  	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
+ll n,k;
+cin>>n>>k;
+ll l=n%10;
+ll am=0;
+if(l!=0)
+{
+f(i,1,11,1)
+{
+	if((l*i)%10==k)
+	{
+		am=i;
+		break;
 	}
-	cout<<ms<<"\n";
-  }
+}
+if(am!=0)
+cout<<am;
+else{
+	ll i=1;
+	while(n%10!=0)
+	n*=i++;
+	cout<<i-1;
+}
+}
+else
+cout<<1;
 return 0;
 }
 

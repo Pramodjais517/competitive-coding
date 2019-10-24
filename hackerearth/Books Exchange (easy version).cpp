@@ -14,21 +14,28 @@ int main()
    cin>>t;
    while(t--)
   {
-  	ll n;
+  	int n;
   	cin>>n;
-  	ll a[n];
+  	int arr[n];
+  	int dumb[n];
+  	memset(dumb, 0, sizeof(dumb)); 
   	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
+  	cin>>arr[i];
+  	int count=0,j;
   	f(i,0,n,1)
   	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
-	}
-	cout<<ms<<"\n";
+  		j=i;
+  		count=0;
+  		while(arr[j]!=i+1)
+  		{
+  			j=arr[j]-1;
+  			count++;
+		}
+		dumb[i]=count+1;	
+	  }
+	  f(i,0,n,1)
+	  cout<<dumb[i]<<" ";
+	  cout<<"\n";
   }
 return 0;
 }

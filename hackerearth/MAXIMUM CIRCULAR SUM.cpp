@@ -7,6 +7,18 @@ using namespace std;
 #define mp make_pair
 #define f(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define itr(i,ar) for(auto &i:ar)
+ll kadane(ll arr[],ll n)
+{
+	ll cs=0,ms=0;
+	f(i,0,n,1)
+	{
+		cs+=arr[i];
+		if(cs<0)
+		cs=0;
+		ms=max(cs,ms);
+	}
+	return ms;
+}
 
 int main()
 {
@@ -16,19 +28,19 @@ int main()
   {
   	ll n;
   	cin>>n;
-  	ll a[n];
+  	ll arr[n];
+  	ll org=0;
   	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
+   {
+    cin>>arr[i];
+    org+=arr[i];
+    }
+  	ll s1 = kadane(arr,n);
   	f(i,0,n,1)
-  	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
-	}
-	cout<<ms<<"\n";
+  	arr[i]=-arr[i];
+  	org=org+kadane(arr,n);
+  	cout<<max(s1,org);
+  	
   }
 return 0;
 }

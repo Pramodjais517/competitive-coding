@@ -7,28 +7,36 @@ using namespace std;
 #define mp make_pair
 #define f(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define itr(i,ar) for(auto &i:ar)
-
+bool checkpow(int n)
+{
+	if(n==1 or n==0)
+	return 1;
+	else if(n==2)
+	return 0;
+	else if(n==3)
+	return 1;
+	int i=0;
+	while(pow(3,i)<n)
+		i++;
+	return checkpow(n-pow(3,i));
+	
+}
 int main()
 {
    ll t;
    cin>>t;
    while(t--)
   {
-  	ll n;
-  	cin>>n;
-  	ll a[n];
-  	f(i,0,n,1)
-  	cin>>a[i];
-  	ll cs=0,ms=0;
-  	int j;
-  	f(i,0,n,1)
-  	{
-  		cs+=a[i];
-  		if(cs<0)
-  		cs=0;
-  		ms=max(cs,ms);
+int n;
+cin>>n;
+for(int i=n;;i++)
+{
+	if(checkpow(n))
+	{
+	cout<<i<<"\n";
+	break;	
 	}
-	cout<<ms<<"\n";
+}
   }
 return 0;
 }
