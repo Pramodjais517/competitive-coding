@@ -9,19 +9,26 @@ using namespace std;
 #define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
 #define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto &i:ar)
+#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-
 
 int main()
 {
-list<ll> l;
-fie(i,1,5,1)
-l.pb(i);
-l.pb(5);
-show(l);
-cout<<endl;
-show(l);
+	ll n;
+	cin>>n;
+	ll a[n];
+	ll sum=0;
+	fi(i,0,n,1)
+	{
+		cin>>a[i];sum+=a[i];
+	}
+	sort(a,a+n);
+	ll c=0, count=0,i=n-1;
+	while(c<=(sum-c))
+	{
+		c+=a[i--];count++;
+	}
+	cout<<count;
 return 0;
 }
 

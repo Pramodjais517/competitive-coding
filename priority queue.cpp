@@ -12,16 +12,15 @@ using namespace std;
 #define itr(i,ar) for(auto &i:ar)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 
-
 int main()
 {
-list<ll> l;
-fie(i,1,5,1)
-l.pb(i);
-l.pb(5);
-show(l);
-cout<<endl;
-show(l);
+priority_queue <string, vector<string> > pq;
+pq.push("hello");pq.push("world");pq.push("truth");pq.push("banana");pq.push("elephant");
+while(!pq.empty())
+{
+	cout<<pq.top()<<" ";
+	pq.pop();
+}
 return 0;
 }
 

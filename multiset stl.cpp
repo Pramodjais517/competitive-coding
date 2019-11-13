@@ -12,16 +12,15 @@ using namespace std;
 #define itr(i,ar) for(auto &i:ar)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 
-
 int main()
 {
-list<ll> l;
-fie(i,1,5,1)
-l.pb(i);
-l.pb(5);
-show(l);
-cout<<endl;
-show(l);
+ multiset<int> ms;
+ ms.insert(2);
+ ms.insert(1);
+ ms.insert(5);
+ ms.insert(2);
+ ms.insert(8);
+ show(ms);
 return 0;
 }
 

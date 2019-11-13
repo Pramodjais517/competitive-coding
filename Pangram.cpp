@@ -9,19 +9,34 @@ using namespace std;
 #define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
 #define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto &i:ar)
+#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-
 
 int main()
 {
-list<ll> l;
-fie(i,1,5,1)
-l.pb(i);
-l.pb(5);
-show(l);
-cout<<endl;
-show(l);
+ll n;
+cin>>n;
+int arr[26]={0};
+string s;
+cin>>s;
+fi(i,0,n,1)
+{
+if(s[i]<=90 and s[i]>=65)
+arr[s[i]-'A']++;
+else
+arr[s[i]-'a']++;
+}
+ll flag=0;
+fi(i,0,26,1)
+{
+	if(arr[i]==0)
+	{
+	flag=1;break;
+	}
+}
+if(!flag)
+cout<<"YES\n";
+else cout<<"NO\n";
 return 0;
 }
 
