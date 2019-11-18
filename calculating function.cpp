@@ -12,19 +12,14 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 
-int main(){
-	int n, t;
-	scanf("%d%d", &n, &t);
-	if (n == 1){
-		printf("%d\n", t < 10 ? t : -1);
-	}
-	else{
-		printf("%d", t < 10 ? t : 1);
-		for (int i = 1; i < n; ++i)
-			putchar('0');
-		puts("");
-	}
-	return 0;
+int main()
+{
+	ll n;cin>>n;
+	if(n&1)
+	cout<<-1*(n-n/2);
+	else 
+	cout<<n/2 ;
+return 0;
 }
 
 

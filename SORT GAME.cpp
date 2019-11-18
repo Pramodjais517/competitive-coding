@@ -11,20 +11,30 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-
-int main(){
-	int n, t;
-	scanf("%d%d", &n, &t);
-	if (n == 1){
-		printf("%d\n", t < 10 ? t : -1);
+bool comp(pair<string, ll> a,pair<string,ll>b)
+{
+	if(a.second==b.second){
+		return a.first < b.first; 
 	}
-	else{
-		printf("%d", t < 10 ? t : 1);
-		for (int i = 1; i < n; ++i)
-			putchar('0');
-		puts("");
-	}
-	return 0;
+	return a.second>b.second;
+}
+int main()
+{
+	ll n,x;
+	cin>>x;
+	cin>>n;
+    pair <string,ll> m[100005];
+	string a; ll b;
+	fi(i,0,n,1)
+	{
+		cin>>a>>b;
+			m[i].first = a;m[i].second=b;	
+	} 
+	sort(m,m+n,comp);
+	fi(i,0,n,1)
+	{if(m[i].second>=x) cout<<m[i].first<<" "<<m[i].second<<"\n";}
+	
+return 0;
 }
 
 

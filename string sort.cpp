@@ -11,19 +11,28 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
+bool length(string s1,string s2){
+	fi(i,0,min(s1.length(),s2.length()),1)
+	{
+		if(s1[i]!=s2[i])
+		return s1<s2;
+	}
+	return s1.length()>=s2.length();
+}
 
-int main(){
-	int n, t;
-	scanf("%d%d", &n, &t);
-	if (n == 1){
-		printf("%d\n", t < 10 ? t : -1);
+int main()
+{
+	ll n;
+	cin>>n;
+	vector <string>s(n);
+	string a;
+	fi(i,0,n,1)
+	{
+		cin>>s[i];
 	}
-	else{
-		printf("%d", t < 10 ? t : 1);
-		for (int i = 1; i < n; ++i)
-			putchar('0');
-		puts("");
-	}
+	sort(s.begin(),s.end(),length);
+	itr(i,s)
+	cout<<*i<<'\n';
 	return 0;
 }
 
