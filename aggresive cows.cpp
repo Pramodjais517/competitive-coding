@@ -11,55 +11,57 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-bool possible(ll p[],ll n,ll mid,ll st)
+
+bool possible(ll arr[],ll s, ll n,ll c)
 {
-	ll s=1,page=0;
-	fi(i,0,n,1)
+	ll count = 1;
+	ll b = arr[0];
+	fi(i,1,s,1)
 	{
-		page+=p[i];
-		if(page>mid)
+		if(arr[i]-b>=n)
 		{
-			s++;
-			page=p[i];
-			if(s>st)
-			return 0;
+		count++;
+		if(count>=c)
+		return 1;
+		b = arr[i];	
 		}
 	}
-	return 1;
+	return 0;
 }
 
 int main()
 {
-   ll t;
+   ll n,c,t;
    cin>>t;
    while(t--)
-  {
-  	ll n, m;cin>>n>>m;
-  	ll p[n];
-  	ll start=0;
-   ll end =0;
-  	fi(i,0,n,1)
-  	{
-  		cin>>p[i];
-  		end+=p[i];
-   }
-   ll mid ;
-   start = p[0];
-   ll ans=start;
-   while(start<=end)
    {
-   	mid= (start+end)/2;
-   	if(possible(p,n,mid,m))
+   cin>>n>>c;
+   ll l = LLONG_MAX;
+   ll h = LLONG_MIN;
+   ll arr[n];
+   fi(i,0,n,1)
+   {
+   	cin>>arr[i];
+   }
+   sort(arr,arr+n);
+   l = arr[0];
+   h = arr[n-1];
+   ll mid ,ans =-1;
+   while(l<=h)
+   {
+   	mid = (h+l)/2;
+   	if(possible(arr,n,mid, c))
    	{
    		ans = mid;
-   		end = mid-1;
-   }
-   else{
-   	start=mid+1;
-   }
+   		l = mid+1;
+    }
+    else{
+    	
+    	h = mid-1;
+	}
    }
    cout<<ans<<"\n";
-  }
+}
 return 0;
 }
 
