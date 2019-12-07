@@ -11,22 +11,20 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-#define xorswap(&a,&b)
-void xswap(int  *a, int *b)
-{
-  *a  = *a^*b;
-  *b = *a^*b;
-  *a = *a^*b;   	
-}
 
-int main()
+int fastexpo(int a,int b)
 {
-   int a=5;
-   int b=7;
-   cout<<a<<" "<<b; 
-   s(&a,&b);
-   cout<<b<<" "<<a;
-   return 0;
+	if(b==0)
+	return 1;
+	else if(b==1)
+	return a;
+	else{
+	    int res = fastexpo(a,b/2);
+		if(b&1)
+		return r*a*r;
+		else
+		return r*r;
+	}
 }
 
 

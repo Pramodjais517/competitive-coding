@@ -11,22 +11,27 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-#define xorswap(&a,&b)
-void xswap(int  *a, int *b)
-{
-  *a  = *a^*b;
-  *b = *a^*b;
-  *a = *a^*b;   	
+
+void subseq(string s,ll n){
+	int i=0;
+	while(n)
+	{
+		(n&1)?cout<<s[i]:cout<<"";
+		n =n>>1;
+		i++;
+	}
+	cout<<"\n";
 }
 
 int main()
 {
-   int a=5;
-   int b=7;
-   cout<<a<<" "<<b; 
-   s(&a,&b);
-   cout<<b<<" "<<a;
-   return 0;
+   string s;cin>>s;
+   ll range = 1<<s.length();
+   fi(i,1,range,1)
+   {
+   	subseq(s,i);
+   }
+return 0;
 }
 
 
