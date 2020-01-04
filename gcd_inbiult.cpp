@@ -7,23 +7,23 @@ using namespace std;
 #define f(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define itr(i,ar) for(auto &i:ar)
 
-int fastexpo(int a,int b,int m)
+ll gcd(ll a,ll b)
 {
-	int res=1;
-	while(b>0)
-	{
-		if(b&1)
-		res=(res*a)%m;
-		a=(a*a)%m;
-		b=b>>1;
-	}
-	return res;
+	if(b==0)
+	return a;
+	return gcd(b,b%a);
 }
 int main()
 {
-int a,b,m;
-cin>>a>>b>>m;
-cout<<fastexpo(a,b,m);
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+
+//}
+ll a,b;
+cin>>a>>b;
+cout<<(a*b)/gcd(a,b);
 return 0;
 }
 

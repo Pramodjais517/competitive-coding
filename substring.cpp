@@ -7,23 +7,35 @@ using namespace std;
 #define f(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define itr(i,ar) for(auto &i:ar)
 
-int fastexpo(int a,int b,int m)
+void filter(string s, int n)
 {
-	int res=1;
-	while(b>0)
+	int i=0;
+	while(n>0)
 	{
-		if(b&1)
-		res=(res*a)%m;
-		a=(a*a)%m;
-		b=b>>1;
+		if((n&1)==1)
+		cout<<s[i];
+		i++;
+		n =n>>1;
 	}
-	return res;
+	cout<<"\n";
+	return;
 }
+
 int main()
 {
-int a,b,m;
-cin>>a>>b>>m;
-cout<<fastexpo(a,b,m);
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+
+//}
+string s;
+cin>>s;
+ll n = s.length();
+for(ll i=0;i<(1<<n);i++)
+{
+	filter(s,i);
+}
 return 0;
 }
 
