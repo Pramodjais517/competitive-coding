@@ -12,26 +12,14 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 
-ll calc(ll b,ll p,ll m)
-{
-	if(p==1)
-	return b;
-	if(p==0)
-	return 1;
-	ll r = calc(b,p/2,m);
-	if(p&1)
-	    return (r%m*b%m*r%m)%m;
-	else
-	    return (r%m*r%m);
-}
+
 int main()
 {
-	ll b,p,m;
-	while(cin>>b>>p>>m)
-	{
-	ll r = calc(b,p,m);
-	cout<<r<<"\n";
-	}
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
 return 0;
 }
 
