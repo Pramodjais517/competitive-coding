@@ -87,7 +87,6 @@ while(t--)
 	cin>>a>>b;
 	a = reverse(a);
 	b = reverse(b);
-	cout<<a<<" "<<b<<"\n";
     string sum  = reverse(string_sum(a,b));
 	cout<<sum<<"\n";
 }

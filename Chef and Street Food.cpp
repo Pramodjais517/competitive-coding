@@ -15,31 +15,23 @@ using namespace std;
 
 int main()
 {
-ll n,l;
-cin>>n>>l;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-sort(a,a+n);
-double md;
-if(a[0]==0)
-md = 0;
-else
-md = a[0]-0;	
-fi(i,0,n-1,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	double x = (double)(a[i+1]-a[i])/2.0;
-	if( x > md)
-	md = x;
+	ll n;
+	cin>>n;
+	ll s,v,p;
+	ll ar[n];
+	fi(i,0,n,1)
+	{
+		cin>>s>>v>>p;
+		s++;
+		ar[i] = (p/s)*v;
+	}
+	sort(ar,ar+n);
+	cout<<ar[n-1]<<"\n";
 }
-if(a[n-1]!=l)
-{
-	double x = (l - a[n-1]);
-	if(x > md)
-	md = x;
-}
-double ans = md;
-cout<<fixed<<setprecision(10)<<ans;
 return 0;
 }
 

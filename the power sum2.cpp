@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -11,35 +12,36 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
+ll exp(ll a, ll b)
+{
+	if(b==0)
+	return 1;
+	if(b==1)
+	return a;
+	ll r = pow(a,b/2);
+	if(b&1)
+	return r*a*r;
+	return r*r;
+}
+// template ends here
 
+ll solve(ll x, ll n,ll num)
+{
+	if(exp(num,n)<x)
+	{
+		return solve(x,n,num+1) + solve((x-exp(num,n)),n,num+1);
+	}
+	if(exp(num,n)==x)
+	return 1;
+	else
+	return 0;
+}
 
 int main()
 {
-ll n,l;
-cin>>n>>l;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-sort(a,a+n);
-double md;
-if(a[0]==0)
-md = 0;
-else
-md = a[0]-0;	
-fi(i,0,n-1,1)
-{
-	double x = (double)(a[i+1]-a[i])/2.0;
-	if( x > md)
-	md = x;
-}
-if(a[n-1]!=l)
-{
-	double x = (l - a[n-1]);
-	if(x > md)
-	md = x;
-}
-double ans = md;
-cout<<fixed<<setprecision(10)<<ans;
+ll x,n;
+cin>>x>>n;
+cout<<solve(x,n,1);
 return 0;
 }
 

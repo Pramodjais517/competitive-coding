@@ -11,35 +11,45 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
-
+///
+///
+//
+//
+//
+//
+//
 
 int main()
 {
-ll n,l;
-cin>>n>>l;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-sort(a,a+n);
-double md;
-if(a[0]==0)
-md = 0;
-else
-md = a[0]-0;	
-fi(i,0,n-1,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	double x = (double)(a[i+1]-a[i])/2.0;
-	if( x > md)
-	md = x;
+	ll n,a,b,c;
+	cin>>n>>a>>b>>c;
+	ll ar[n];
+	fi(i,0,n,1)
+	cin>>ar[i];
+	ll mi = 100000000000;
+	ll f;
+	fi(i,0,n,1)
+	{
+		if((a<ar[i] and ar[i]<b) or (a>ar[i] and ar[i]>b))
+		{
+			f=ar[i];
+			break;
+		}
+	    else{
+		if(abs(b-ar[i])<mi)
+		{
+			f = ar[i];
+			mi=abs(b-ar[i]);
+		}
+    }
+  
+	cout<<abs(f-b)+c+abs(f-a)<<"\n";
 }
-if(a[n-1]!=l)
-{
-	double x = (l - a[n-1]);
-	if(x > md)
-	md = x;
-}
-double ans = md;
-cout<<fixed<<setprecision(10)<<ans;
 return 0;
-}
+
+}}
 
