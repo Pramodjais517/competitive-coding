@@ -13,7 +13,7 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-map<ll,ll> m;
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -27,24 +27,27 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+void permutation(string s,ll i)
+{
+	if(i==s.length() or s[i]=='\0')
+	{
+		cout<<s<<"\n";
+		return;
+	}
+	fi(j,i,s.length(),1)
+	{
+		swap(s[i],s[j]);
+		permutation(s,i+1);
+		swap(s[i],s[j]);
+	}
+}
+
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	 ll  n;
-	 cin>>n;
-	 if(n%2!=0)
-	 {
-	  cout<<7;
-	  n=n-3;
-	 }
-	 fie(i,1,n/2,1)
-	 cout<<1;
-	 cout<<"\n";
-	 
-}
+string s;
+cin>>s;
+string out;
+permutation(s,0);
 return 0;
 }
 

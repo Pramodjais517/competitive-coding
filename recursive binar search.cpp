@@ -13,7 +13,7 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-map<ll,ll> m;
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -27,24 +27,30 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+int bin_search(ll a[],ll s,ll start, ll end)
+{
+	int mid = (start+end)/2;
+	if(a[mid]==s)
+	return mid;
+	if(mid<start or mid>end)
+	return -1;
+	else 
+	if(a[mid]<s)
+	return bin_search(a, s,mid+1,end);
+	return bin_search(a,s,0,mid-1);
+}
+
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	 ll  n;
-	 cin>>n;
-	 if(n%2!=0)
-	 {
-	  cout<<7;
-	  n=n-3;
-	 }
-	 fie(i,1,n/2,1)
-	 cout<<1;
-	 cout<<"\n";
-	 
-}
+ll n;
+cin>>n;
+ll a[n];
+fi(i,0,n,1)
+cin>>a[i];
+ll s;
+cin>>s;
+sort(a,a+n);
+cout<<bin_search(a,s,0,n-1);
 return 0;
 }
 

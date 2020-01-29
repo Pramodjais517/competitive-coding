@@ -13,7 +13,8 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-map<ll,ll> m;
+map<int,string> m;
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -27,24 +28,56 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+void mapping()
+{
+	for(int i=0;i<10;i++)
+	switch(i)
+	{
+		case 0:
+			m[i]="zero";
+			break;
+		case 1:
+			m[i]="one";
+			break;
+		case 2:
+			m[i] = "two";
+			break;
+		case 3:
+			m[i]="three";
+			break;
+		case 4:
+			m[i]="four";
+			break;
+		case 5:
+			m[i]="five";
+			break;
+		case 6:
+			m[i]="six";
+			break;
+		case 7:
+			m[i]="seven";
+			break;
+		case 8:
+			m[i]="eight";
+			break;
+		case 9:
+			m[i] ="nine";
+			break;
+	}
+}
+void solve(ll n)
+{
+   if(n<=0)
+   return;
+   solve(n/10);
+   cout<<m[n%10]<<" ";
+}
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	 ll  n;
-	 cin>>n;
-	 if(n%2!=0)
-	 {
-	  cout<<7;
-	  n=n-3;
-	 }
-	 fie(i,1,n/2,1)
-	 cout<<1;
-	 cout<<"\n";
-	 
-}
+int n;
+cin>>n;
+mapping();
+solve(n);
 return 0;
 }
 

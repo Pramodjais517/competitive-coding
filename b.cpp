@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -11,6 +12,21 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
+#define mod 1000000007
+
+ll exp(ll a, ll b)
+{
+	if(b==0)
+	return 1;
+	if(b==1)
+	return a;
+	ll r = pow(a,b/2);
+	if(b&1)
+	return r*a*r;
+	return r*r;
+}
+// template ends here
+
 
 int main()
 {
@@ -18,45 +34,12 @@ ll t;
 cin>>t;
 while(t--)
 {
-	ll n;
-	cin>>n;
-	vector<pair<ll,ll>> a;ll x,y;
-	a.pb(mp(0,0));
-	fi(i,0,n,1)
+	string s,z,t="";
+	cin>>s>>z;
+	ll k=0;
+	while(k<z.length())
 	{
-		cin>>x>>y;
-		a.push_back(make_pair(x,y));
-	}
-	sort(a.begin(),a.end());
-	int f=0;
-	for(int i=0;i<n;i++)
-	{
-		if(a[i].first > a[i+1].first or a[i].second >  a[i+1].second)
-		{
-			f=1;
-			break;
-		}
-	}
-	if(f==1)
-	{
-		cout<<"NO\n";
-	}else
-	{
-		cout<<"YES\n";
-		for(int i=0;i<n;i++)
-		{
-			int dx = a[i+1].first - a[i].first;
-			int dy  = a[i+1].second - a[i].second;
-			while(dx -- )
-			{
-				cout<<"R";
-			}
-			while(dy--)
-			{
-				cout<<"U";
-			}
-		}
-		cout<<"\n";
+		for(i)
 	}
 }
 return 0;

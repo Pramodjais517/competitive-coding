@@ -13,7 +13,7 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-map<ll,ll> m;
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -26,24 +26,47 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
+void presum(ll ar[],ll n)
+{
+	fi(i,1,n,1)
+	ar[i] +=ar[i-1];
+	return;
+}
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
+ll n;
+cin>>n;
+ll ar[n];
+fi(i,0,n,1)
+cin>>ar[i];
+ll dec[n];
+fi(i,0,n,1)
+dec[i] = ar[i];
+sort(dec,dec+n);
+presum(ar,n);
+presum(dec,n);
+ll m;
+cin>>m;
+ll l,r;
+while(m--)
 {
-	 ll  n;
-	 cin>>n;
-	 if(n%2!=0)
-	 {
-	  cout<<7;
-	  n=n-3;
-	 }
-	 fie(i,1,n/2,1)
-	 cout<<1;
-	 cout<<"\n";
-	 
+int t;
+cin>>t;cin>>l>>r;
+
+if(t==1)
+{	
+	if(l!=1)
+	cout<<(ar[r-1]-ar[l-2])<<"\n";
+	else
+	cout<<ar[r-1]<<"\n";
+}
+else
+{
+	if(l!=1)
+	cout<<(dec[r-1]-dec[l-2])<<"\n";
+	else
+    cout<<dec[r-1]<<"\n";
+}	
 }
 return 0;
 }

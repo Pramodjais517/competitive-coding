@@ -13,7 +13,7 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-map<ll,ll> m;
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -27,24 +27,40 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
+ll n,k;
+cin>>n>>k;
+ll a[n];
+fi(i,0,n,1)
+cin>>a[i];
+ll in=0;
+ll sum=0,m=1000000000;
+for(ll i=0;i<k;i++)
 {
-	 ll  n;
-	 cin>>n;
-	 if(n%2!=0)
-	 {
-	  cout<<7;
-	  n=n-3;
-	 }
-	 fie(i,1,n/2,1)
-	 cout<<1;
-	 cout<<"\n";
-	 
+	sum += a[i];
 }
+if(sum<m)
+{
+	in=0;
+	m = sum;
+}
+for(ll i=k;i<n;i++)
+{
+	sum = (sum+a[i])-a[i-k];
+	if(sum < m)
+	{
+		m = sum;
+		in = i-k+1;
+	}
+}
+cout<<in+1;
 return 0;
 }
 
