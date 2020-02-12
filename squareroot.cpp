@@ -30,20 +30,21 @@ ll exp(ll a, ll b)
 
 int main()
 {
-ll n,m;
-cin>>n>>m;
-ll c=0;
-fie(i,1,n,1)
-{
-	fie(j,1,m,1)
-	{
-		if((i+j)%5==0)
-		{
-			c++;
+	ll n;
+	cin >> n;
+	int start = 0, end = n;
+	int mid;
+	int ans = -1;
+    while(start <= end) {
+		mid = (start + end) / 2;
+		if(mid * mid <= n){
+			start = mid + 1;
+			ans = mid;
 		}
-	}
+		else
+			end = mid - 1;
 }
-cout<<c<<"\n";
+cout<<ans;
 return 0;
 }
 

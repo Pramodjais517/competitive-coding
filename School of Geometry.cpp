@@ -13,21 +13,9 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
+// template ends here 
 
-ll exp(ll a, ll b)
-{
-	if(b==0)
-	return 1;
-	if(b==1)
-	return a;
-	ll r = pow(a,b/2);
-	if(b&1)
-	return r*a*r;
-	return r*r;
-}
-// template ends here
-
-
+// this is Mr.Stark here.
 int main()
 {
 ll t;

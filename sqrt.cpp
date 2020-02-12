@@ -30,20 +30,12 @@ ll exp(ll a, ll b)
 
 int main()
 {
-ll n,m;
-cin>>n>>m;
-ll c=0;
-fie(i,1,n,1)
-{
-	fie(j,1,m,1)
-	{
-		if((i+j)%5==0)
-		{
-			c++;
-		}
-	}
-}
-cout<<c<<"\n";
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
+cout<<sqrt(2);
 return 0;
 }
 
