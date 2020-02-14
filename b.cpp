@@ -34,14 +34,59 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string s,z,t="";
-	cin>>s>>z;
-	ll k=0;
-	while(k<z.length())
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	
+	int flag=0;
+	fi(i,0,n,1)
 	{
-		for(i)
+		if(a[i]!=-1)
+		{
+			flag=1;
+			break;
+		}
+		
 	}
-}
+	if(flag==0)
+	{
+		cout<<0<<" "<<0<<"\n";
+		continue;
+	}
+	else
+	{
+		ll c=0;ll sum=0,m=0;
+		fi(i,0,n,1)
+		{
+			if(a[i]!=-1)
+			{
+				sum+=a[i];
+				c++;
+			}
+		}
+		if(sum==0 or c==0)
+		{
+			cout<<"0 0\n";
+			continue;
+		}
+		m  = sum/c;
+	     fi(i,0,n,1)
+	     {
+	     	if(a[i]==-1)
+	     	a[i]=m;
+		 }
+		 ll dif=0;
+		 fi(i,0,n-1,1)
+		 {
+		 	dif = max(dif,abs(a[i+1]-a[i]));
+		 }
+		 dif = max(dif,abs(a[n-1] - a[n-2]));
+		 cout<<dif<<" "<<m<<"\n";
+		}
+	   	
+	}
 return 0;
 }
 

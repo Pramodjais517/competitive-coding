@@ -27,14 +27,36 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
-
 int main()
 {
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-return 0;
+	ll T;
+	cin>>T;
+	ll tp = 0;
+	while(T--)
+	{
+		map<pair<char,ll>,ll> m;
+		ll n;
+		cin>>n;
+		char s; ll t;
+		for(int j=0;j<n;j++)
+		{
+			cin>>s>>t;
+			m[{s,t}]++;
+		}
+		map<pair<char,ll>, ll>::iterator i; 
+		multimap<ll,pair<char,ll>,greater<int>> nm;
+		ll maxA=0,maxB=0,maxC=0,maxD=0,tm=0;
+		for(i=m.begin();i!=m.end();i++)
+		{
+			nm.insert( mp(i->second,mp(i->first.first,i->first.second)));
+		}
+		multimap<ll,pair<char,ll>>:: iterator j;
+		for(j=nm.begin();j!=nm.end();j++)
+		{
+			cout<<j->first<<" "<<j->second.first<<" "<<j->second.second<<"\n";
+		}
+	}
+	
+		
+	return 0;
 }
-

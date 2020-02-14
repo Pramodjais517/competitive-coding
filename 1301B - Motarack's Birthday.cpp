@@ -14,39 +14,52 @@ using namespace std;
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
 
-// template ends here
-
-
 int main()
 {
 ll t;
 cin>>t;
 while(t--)
 {
-	string a,b,c;
-	cin>>a>>b>>c;
-	int flag=0;
-	fi(i,0,a.length(),1)
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	vector<ll> v;
+	for(ll i=0;i<n;i++)
 	{
-		if(a[i]!=b[i])
+		if(a[i]!=-1)
 		{
-			if(a[i]!=c[i] and b[i]!=c[i])
+			if(i==0)
 			{
-				flag=1;
-				break;
-			}		
-		}
-		else if(a[i]==b[i] and a[i]!=c[i])
-		{
-			flag=1;
-			break;
+				if(a[i+1]==-1)
+				v.push_back(a[i]);
+			}
+			else if(i==n-1)
+			{
+				if(a[i-1]==-1)
+				v.pb(a[i]);
+			}
+			else if(a[i-1]==-1 or a[i+1]==-1)
+			v.pb(a[i]);	
 		}
 	}
-	if(flag==1)
-	cout<<"NO\n";
-	else 
-	cout<<"YES\n";
-}
+	sort(v.begin(),v.end());
+	ll m=0;
+	if(v.size()!=0)
+	m = (v[v.size()-1]+v[0])/2;
+	for(ll i=0;i<n;i++)
+	{
+		if(a[i] == -1)
+		a[i]=m;
+	}
+	ll dif=0;
+	for(ll i = 0 ; i < n-1 ; i++)
+	{
+	 dif = max(dif,abs(a[i+1]-a[i]));	
+	}
+	cout<<dif<<" "<<m<<"\n";
+  }
 return 0;
 }
 

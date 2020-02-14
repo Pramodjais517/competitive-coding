@@ -14,39 +14,42 @@ using namespace std;
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
 
+ll exp(ll a, ll b)
+{
+	if(b==0)
+	return 1;
+	if(b==1)
+	return a;
+	ll r = pow(a,b/2);
+	if(b&1)
+	return r*a*r;
+	return r*r;
+}
 // template ends here
-
 
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	string a,b,c;
-	cin>>a>>b>>c;
-	int flag=0;
-	fi(i,0,a.length(),1)
+	ll T;
+	cin>>T;
+	ll tp = 0;
+	while(T--)
 	{
-		if(a[i]!=b[i])
+		map<pair<char,int>,int> m;
+		ll n;
+		cin>>n;
+		char s; ll t;
+		for(int j=0;j<n;j++)
 		{
-			if(a[i]!=c[i] and b[i]!=c[i])
-			{
-				flag=1;
-				break;
-			}		
+			cin>>s>>t;
+			m[{s,t}]++;
 		}
-		else if(a[i]==b[i] and a[i]!=c[i])
+		map<pair<char,int>, int>::iterator i; 
+		for(i=m.begin(); i!=m.end(); i++)
 		{
-			flag=1;
-			break;
+			cout<<i->first.first<<" "<<i->first.second<<" "<<i->second<<"\n";
 		}
 	}
-	if(flag==1)
-	cout<<"NO\n";
-	else 
-	cout<<"YES\n";
+	
+		
+	return 0;
 }
-return 0;
-}
-
