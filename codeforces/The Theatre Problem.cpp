@@ -55,6 +55,10 @@ int main()
 		{
 			cout<<j->first<<" "<<j->second.first<<" "<<j->second.second<<"\n";
 		}
+		for(j=nm.begin();j!=nm.end();j++)
+		{
+			
+		}
 	}
 	
 		
