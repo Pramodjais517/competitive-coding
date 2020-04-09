@@ -26,21 +26,34 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
+ll count =0 ;
+ll maze(char a[][1001],ll i,ll j,ll n, ll m)
+{	
+	if(i==n-1 and j == m-1)
+	{
+		//print the matrix
+		return 1;
+	}
+	if(j>m or i>n)
+	{
+		return 0;
+	}
+	if(a[i][j]=='1')
+	{
+		return 0;
+	}
+	return maze(a,i,j+1,n,m) + maze(a,i+1,j,n,m);
+}
 
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
-		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+int main()
+{
+	ll n;
+	cin>>n;
+	char a[1001][1001];
+	for(ll i=0;i<n;i++)
+	for(ll j=0;j<n;j++)
+	cin>>a[i][j];
+	cout<<maze(a,0,0,n,n)<<"\n";
 return 0;
 }
+

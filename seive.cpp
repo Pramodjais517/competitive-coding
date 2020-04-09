@@ -13,7 +13,24 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-
+ll n = 2*1000000;
+bool prime[2*1000000+1];
+void Sieve() 
+{  
+     
+    memset(prime, true, sizeof(prime)); 
+    prime[0]=false;
+    prime[1]=false;
+    for (int i=2; i*i<=n; i++) 
+    { 
+        if (prime[i] == true) 
+        {   
+            for (int j=i*i; j<=n; j += i) 
+                prime[j] = false; 
+        } 
+    }  
+    return;
+} 
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -27,20 +44,33 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
-		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+
+int main()
+{
+prime[0]=false;
+prime[1]=false;
+Sieve();
+ll t;
+cin>>t;
+while(t--)
+{
+	ll p;
+	cin>>p;
+	ll ar[p];
+	for(ll i=0;i<p;i++)
+	cin>>ar[i];
+	ll st=0,en = p-1;
+	ll count=0;
+	for(ll i=0;i<p-1;i++)
+	{
+	 for(ll j=i+1;j<p;j++)
+	 {
+	 	if(prime[ar[i]+ar[j]])
+	 	count++;
+	 }
+	}
+	cout<<count<<"\n";
+}
 return 0;
 }
+

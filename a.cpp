@@ -14,39 +14,27 @@ using namespace std;
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
 
+ll exp(ll a, ll b)
+{
+	if(b==0)
+	return 1;
+	if(b==1)
+	return a;
+	ll r = pow(a,b/2);
+	if(b&1)
+	return r*a*r;
+	return r*r;
+}
 // template ends here
 
 
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	string a,b,c;
-	cin>>a>>b>>c;
-	int flag=0;
-	fi(i,0,a.length(),1)
-	{
-		if(a[i]!=b[i])
-		{
-			if(a[i]!=c[i] and b[i]!=c[i])
-			{
-				flag=1;
-				break;
-			}		
-		}
-		else if(a[i]==b[i] and a[i]!=c[i])
-		{
-			flag=1;
-			break;
-		}
-	}
-	if(flag==1)
-	cout<<"NO\n";
-	else 
-	cout<<"YES\n";
-}
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
 return 0;
 }
 

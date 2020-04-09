@@ -26,21 +26,28 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
+void binexp(ll a , ll n)
+{
+	ll res=1;
+	while(n)
+	{
+		if(n&1)
+		{
+			res*=a;
+			n--;
 		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+		a*=a;
+		n/=2;
+	}
+	cout<<res;
+	return;
+}
+
+int main()
+{
+	ll a,b;
+	cin>>a>>b;
+	binexp(a,b);
 return 0;
 }
+

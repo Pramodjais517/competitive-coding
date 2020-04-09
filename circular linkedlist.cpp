@@ -26,21 +26,52 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
+class Clist{
+	public:
+		int data;
+		Clist* next;
+		Clist(int d)
+		{
+			data = d;
+			next = NULL;
 		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+};
+void insert(Clist* &head,int d)
+{
+	Clist* node = new Clist(d);
+	if(head == NULL)
+	{
+	head = node;
+	head->next = head;
+	return;	
+	}
+	Clist* temp = head;
+	while(temp!=NULL and temp->next!= head)
+	{
+		temp = temp->next;
+	}
+	temp -> next = node;
+	node->next = head;
+}
+void display(Clist* head)
+{
+	if(head == NULL)
+	return;
+	Clist* temp = head;
+	do
+	{
+		cout<<temp->data<<"->";
+		temp = temp->next;
+	}
+	while(temp!=head);
+}
+int main()
+{
+Clist* head = NULL;
+insert(head,2);	
+insert(head,3);
+insert(head,4);
+display(head);
 return 0;
 }
+

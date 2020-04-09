@@ -26,21 +26,25 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
+void subseq(char *s,char *out,int i, int j)
+{
+	if(s[i]=='\0')
+	{
+		out[j]='\0';
+		cout<<out<<"\n";
+		return;
+	}
+	subseq(s,out, i+1,j);
+	out[j] = s[i];
+	subseq(s,out, i+1,j+1);
+}
 
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
-		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+int main()
+{
+char s[100];
+cin>>s;
+char out[100];
+subseq(s,out,0,0);
 return 0;
 }
+

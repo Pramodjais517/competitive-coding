@@ -27,20 +27,47 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
+
+int main()
+{
+ll t;
+cin>>t;
+ll c=1;
+while(c<=t)
+{
+	string s;
+	cin>>s;
+	string ans;
+	for(int j=0;j<(s[0]-'0');j++)
+	{
+			ans.pb('(');
+	}
+	ans.pb(s[0]);
+	for(int i=1;i<s.length();i++)
+	{
+		if((s[i]-'0')>(s[i-1]-'0'))
+		{
+			for(int j=0;j<(s[i]-s[i-1]);j++)
+			{
+				ans.pb('(');
+			}
 		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+		else if((s[i]-'0')<(s[i-1]-'0'))
+		{
+			for(int j=0;j<(s[i-1]-s[i]);j++)
+			{
+				ans.pb(')');
+			}
+		}
+		ans.pb(s[i]);
+	}
+	for(int i=0;i<(s[s.length()-1]-'0');i++)
+	{
+		ans.pb(')');
+	}
+	cout<<"Case #"<<c<<": "<<ans<<"\n";
+	c++;
+}
 return 0;
 }
+

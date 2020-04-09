@@ -27,20 +27,42 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
-int main() {
-    ll ans=INT_MAX;
-    string s;
-    cin>>s;
-    ll n = s.size()-1;
-    for(ll i=0;s[i];i++){
-    	ll count = i;
-    	for(ll j=i;j<(n+i)/2;j++)
-    	{
-    		if(s[j]!=s[n-j])
-    		count++;
+
+int main()
+{
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n;
+	cin>>n;
+	ll a[n],b[n];
+	fi(i,0,n,1)
+	{
+		cin>>a[i];
+	}
+	fi(i,0,n,1)
+	cin>>b[i];
+	bool neg=false,pos=false,flag = true;
+	fi(i,0,n,1)
+	{
+		if(a[i]!=b[i])
+		{
+			if(b[i]>a[i] and !pos)
+			flag = false;
+			else if(b[i]<a[i] and !neg)
+			flag = false;
 		}
-        ans=min(ans,count);
-    }
-    cout<<ans<<"\n";
+		if(a[i]>0 and !pos)
+		pos = 1;
+		else if(a[i]<0 and !neg)
+		neg=1;
+	}
+	if(flag)
+	cout<<"YES\n";
+	else
+	cout<<"NO\n";
+}
 return 0;
 }
+

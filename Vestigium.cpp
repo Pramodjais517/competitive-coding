@@ -30,11 +30,59 @@ ll exp(ll a, ll b)
 
 int main()
 {
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
+ll t;
+cin>>t;
+ll c =1;
+while(c<=t)
+{
+	ll n;
+	cin>>n;
+	ll m[n][n];
+	ll tr= 0,repr=0,repc=0;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			cin>>m[i][j];
+			if(i==j)
+			tr+=m[i][j];
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		map<ll,ll> mp;
+		for(int j=0;j<n;j++)
+		{
+			mp[m[i][j]]++;
+		}
+		for(auto itr=mp.begin();itr!=mp.end();itr++)
+		{
+			if(itr->second > 1)
+			{
+				repr++;
+				break;
+			}
+		}
+	}
+	for(int j=0;j<n;j++)
+	{
+		map<ll,ll> mp;
+		for(int i=0;i<n;i++)
+		{
+			mp[m[i][j]]++;
+		}
+		for(auto itr=mp.begin();itr!=mp.end();itr++)
+		{
+			if(itr->second > 1)
+			{
+				repc++;
+				break;		
+			}
+		}
+	}
+	cout<<"Case #"<<c<<": "<<tr<<" "<<repr<<" "<<repc<<"\n";
+	c++;
+}
 return 0;
 }
 

@@ -26,73 +26,75 @@ ll exp(ll a, ll b)
 	return r*r;
 }
 // template ends here
-bool issafe(int board[][4],int i,int j,int n)
+bool Issafe(ll board[][10],ll i,ll j,ll n)
 {
-	for(int row=0;row<i;row++)
+	// checking the column
+	for(int k=0;k<i;k++)
 	{
-		if(board[row][j]==1)
+		if(board[k][j]==1)
 		return false;
 	}
-    int	x = i;
-	int y = j;
-	while(x>=0 and y>=0){
+	// checking left diagonal
+	ll x=i,y=j;
+	while(x>=0 and y>=0)
+	{
+		x--;
+		y--;
 		if(board[x][y]==1)
 		return false;
-		x--;
-		y--; 
+		
 	}
-	x = i;y=j;
+	// checking right diagonal
+	x=i, y=j;
 	while(x>=0 and y<n)
 	{
-		if(board[x][y]==1)
-		return false;
 		x--;
 		y++;
+		if(board[x][y]==1)
+		return false;
+		
 	}
 	return true;
 }
 
-bool solve(int board[][4],int i,int n)
+bool solveNqueen(ll board[][10],ll i,ll n)
 {
-	//base case
 	if(i==n)
 	{
-		for(int i=0;i<n;i++)
+		//board is complete now print the board
+		for(ll j=0;j<n;j++)
 		{
-			for(int j=0;j<n;j++)
+			for(ll k=0;k<n;k++)
 			{
-				if(board[i][j]==1)
-				cout<<"Q ";
-				else
-				cout<<"- ";
+				cout<<board[j][k]<<" ";
 			}
 			cout<<"\n";
 		}
-		cout<<"\n";
-		return false;
+		return true;
 	}
-	// recursive case
-	for(int j=0;j<n;j++)
+	for(ll j=0;j<n;j++)
 	{
-		
-		if(issafe(board,i,j,n))
+		if(Issafe(board,i,j,n))
 		{
 			board[i][j]=1;
-			bool poss = solve(board,i+1,n);
-			if(poss)
-			return true;
+			bool soln = solveNqueen(board,i+1,n);
+			if(soln)
+			{
+				return true;
+			}
 			board[i][j]=0;
-			
 		}
 	}
 	return false;
-	
 }
+
 int main()
 {
-int n=4;
-int board[4][4]={0};
-solve(board,0,n);
+ ll n;
+ cin>>n;
+ ll board[10][10];
+ memset(board,0,sizeof(board));
+ solveNqueen(board,0,n);
 return 0;
 }
 
