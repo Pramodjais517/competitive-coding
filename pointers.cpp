@@ -5,7 +5,6 @@ using namespace std;
 #define ull unsigned long long
 #define rs reserve
 #define pb push_back
-#define pf push_front
 #define mp make_pair
 #define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
@@ -31,15 +30,10 @@ ll exp(ll a, ll b)
 
 int main()
 {
-	forward_list<int> f;
-	f.assign({1,2});
-	f.emplace_after(f.begin(),7);
-	for(auto &i:f)
-	cout<<i<<" ";
-	cout<<"\n"; 	
-	f.sort();
-	for(auto &i: f)
-	cout<<i<<" ";
+	int x = 5;
+	int* y = &x;
+	y = NULL;
+	cout<<x<<" "<<y<<" ";
 return 0;
 }
 
