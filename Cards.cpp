@@ -30,33 +30,23 @@ ll exp(ll a, ll b)
 
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	 ll a[9][9];
-	 vector<string> s(9);
-	 fi(i,0,9,1)
-	 cin>>s[i];
-	 int j=0;
-	 fi(i,0,9,1)
-	 {
-	 	s[i][j]=(s[i][j]=='9')?'1':char(s[i][j]+1);
-	 	if(i==2)
-	 	j=1;
-	 	else if(i==5)
-	 	j=2;
-	 	else
-	 	j = (j+3)%9;
-	 }
-	 fi(i,0,9,1)
-	 {
-	 	fi(j,0,9,1)
-	 	cout<<s[i][j];
-	 	cout<<"\n";
+	ll n;
+	cin>>n;
+	string s;
+	cin>>s;
+	ll nc=0,nz=0;
+	fi(i,0,s.length(),1)
+	{
+		if(s[i]=='n')
+		nc++;
+		if(s[i]=='z')
+		nz++;
 	}
-	 
-}
+	while(nc--)
+	cout<<1<<" ";
+	while(nz--)
+	cout<<0<<" ";
+	cout<<"\n";
 return 0;
 }
 

@@ -1,40 +1,126 @@
 #include<bits/stdc++.h>
 using namespace std;
-// template starts here
+#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 #define ll long long
-#define ull unsigned long long
-#define rs reserve
+#define vi vector<int>
+#define vl vector<ll>
 #define pb push_back
+#define pi pair<int,int>
+#define pl pair<ll,ll>
+#define vpi vector<pi>
+#define vpl vector<pl>
+#define umi unordered_map<int,int>
+#define uml unordered_map<ll,ll>
 #define mp make_pair
-#define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
-#define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
-#define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
-#define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
-#define show(ar) for(auto &i:ar) cout<<i<<" "
+#define F first
+#define S second
 #define mod 1000000007
+#define inf 1000000000000000
+#define md 998244353
+#define endl "\n"
 
-ll exp(ll a, ll b)
+ll prime[1000000];
+
+void sieve()
 {
-	if(b==0)
-	return 1;
-	if(b==1)
-	return a;
-	ll r = pow(a,b/2);
-	if(b&1)
-	return r*a*r;
-	return r*r;
+	prime[0]=0;
+	prime[1]=0;
+	for(int i=2;i<1000000;i++)
+		prime[i]=1;
+
+	for(int i=2;i*i<1000000;i++)
+		if(prime[i]==1)
+			for(int j=i*i;j<1000000;j+=i)
+				prime[j]=0;
 }
-// template ends here
+
+bool isPrime(ll n) 
+{ 
+    if (n <= 1) 
+        return false; 
+    for (ll i = 2; i <= floor(sqrt(n)); i++) 
+        if (n % i == 0) 
+            return false; 
+  
+    return true; 
+}
+
+ll gcd(ll a, ll b)
+{ 
+	return !b ? a : gcd(b, a % b); 
+}
+ll lcm(ll a, ll b)
+{ 
+	return (a / gcd(a, b)) * b; 
+}
+ll fastExponentiation(ll n, ll x, ll modulo) 
+{
+	ll res = 1;
+	while(x > 0) 
+       {
+          if(x & 1)
+          res = (res*n) % modulo; 
+          x = x >> 1;
+          n = (n * n) % modulo;
+       }
+       return res; 
+}
+
+
+ll power(ll n , ll p ){
+	if(p==0)
+	   return 1;
+ 
+	 ll res = power((n*n)%mod,p/2);
+	 if(p%2==1)
+	   res = (n*res)%mod;
+ 
+	   	 return res;
+}
+
+bool isPowerOfTwo(int n) 
+{ 
+   if(n==0) 
+   return false; 
+  
+   return (ceil(log2(n)) == floor(log2(n))); 
+}   
+
+void print(int a[],int n)
+{
+	for(int i=0;i<n;i++)
+	cout<<a[i]<<" ";
+	cout<<endl;
+}
+void input_array(int a[],int n)
+{
+	for(int i=0;i<n;i++)
+	cin>>a[i];
+}
+
+void solve()
+{
+	ll n;
+	cin>>n;
+
+	ll m=n/2;
+	ll a=m,b=n-m;
+	
+	if(a<b)
+	cout<<a<<endl;
+	else if(a==b)
+	cout<<a-1<<endl;
+
+
+
+}
 
 
 int main()
 {
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-return 0;
+	
+	int t; cin>>t; while(t--)
+	solve();
+	
+	return 0;
 }
-

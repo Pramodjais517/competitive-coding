@@ -28,35 +28,35 @@ ll exp(ll a, ll b)
 // template ends here
 
 
-int main()
-{
-ll t;
-cin>>t;
-while(t--)
-{
-	 ll a[9][9];
-	 vector<string> s(9);
-	 fi(i,0,9,1)
-	 cin>>s[i];
-	 int j=0;
-	 fi(i,0,9,1)
-	 {
-	 	s[i][j]=(s[i][j]=='9')?'1':char(s[i][j]+1);
-	 	if(i==2)
-	 	j=1;
-	 	else if(i==5)
-	 	j=2;
-	 	else
-	 	j = (j+3)%9;
-	 }
-	 fi(i,0,9,1)
-	 {
-	 	fi(j,0,9,1)
-	 	cout<<s[i][j];
-	 	cout<<"\n";
-	}
-	 
-}
-return 0;
-}
 
+int main(){
+	ll t;
+	cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        ll a[n];
+        ll count;
+        ll k=0,mx=0;
+        ll ans=1,c=1,p=1;
+        fi(i,0,n,1)
+		cin>>a[i];
+        fi(i,0,n,1)
+        {
+        	if(a[i]<a[i-1]){
+                mx=max(mx,a[i-1]-a[i]);
+                a[i]=a[i-1];
+            }
+        	
+		}
+        while(1){
+            if(ans>=mx)break;
+            p *= 2;
+            ans += p;
+            c++;
+        }
+        if(mx)cout<<c<<endl;
+        else cout<<0<<endl;
+    }
+    return 0;
+}

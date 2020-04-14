@@ -30,22 +30,37 @@ ll exp(ll a, ll b)
 
 int main()
 {
-	ll n,m;
-	cin>>n>>m;
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n,x;
+	cin>>n>>x;
 	ll a[n];
 	for(int i=0;i<n;i++)
 	cin>>a[i];
 	sort(a,a+n);
-	ll maxm = a[n-1];
-	ll temp = m;
-	while(temp)
+	ll sum = 0,count=0;
+	for(int i=n-1;i>=0;i--)
 	{
-		a[0]+=1;
-		sort(a,a+n);
-		temp--;
+		if(a[i]>x)
+		{
+		sum+= a[i]-x;
+		count++;	
+		}
+		if(a[i]==x)
+		{
+			count++;
+		}
+		if(a[i]<x and sum >0)
+		{
+		sum -= x-a[i];
+		if(sum>=0)
+		count++;	
+		}	
 	}
-	cout<<a[n-1]<<" ";
-	cout<<maxm+m<<"\n";
+	cout<<count<<"\n";
+}
 return 0;
 }
 

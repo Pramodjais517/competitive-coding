@@ -34,28 +34,25 @@ ll t;
 cin>>t;
 while(t--)
 {
-	 ll a[9][9];
-	 vector<string> s(9);
-	 fi(i,0,9,1)
-	 cin>>s[i];
-	 int j=0;
-	 fi(i,0,9,1)
-	 {
-	 	s[i][j]=(s[i][j]=='9')?'1':char(s[i][j]+1);
-	 	if(i==2)
-	 	j=1;
-	 	else if(i==5)
-	 	j=2;
-	 	else
-	 	j = (j+3)%9;
-	 }
-	 fi(i,0,9,1)
-	 {
-	 	fi(j,0,9,1)
-	 	cout<<s[i][j];
-	 	cout<<"\n";
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	sort(a,a+n);
+	ll s=0,e=n-1;
+	ll b[n];
+	memset(b,0,sizeof(b));
+	ll j=n-1;
+	while(s<=e)
+	{
+		b[j--] = a[s];
+		b[j--] = a[e];
+		s++;e--;
 	}
-	 
+	fi(i,0,n,1)
+	cout<<b[i]<<" ";
+	cout<<"\n";
 }
 return 0;
 }

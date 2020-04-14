@@ -34,28 +34,9 @@ ll t;
 cin>>t;
 while(t--)
 {
-	 ll a[9][9];
-	 vector<string> s(9);
-	 fi(i,0,9,1)
-	 cin>>s[i];
-	 int j=0;
-	 fi(i,0,9,1)
-	 {
-	 	s[i][j]=(s[i][j]=='9')?'1':char(s[i][j]+1);
-	 	if(i==2)
-	 	j=1;
-	 	else if(i==5)
-	 	j=2;
-	 	else
-	 	j = (j+3)%9;
-	 }
-	 fi(i,0,9,1)
-	 {
-	 	fi(j,0,9,1)
-	 	cout<<s[i][j];
-	 	cout<<"\n";
-	}
-	 
+	ll n;
+	cin>>n;
+	cout<<n<<"\n";
 }
 return 0;
 }
