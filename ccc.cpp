@@ -27,30 +27,64 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+vector<ll>adj[200001];
+bool mark[200001];
+ll depth[200001];
+ll pre[200001];
 
+void dfs(ll s)
+{
+mark[s]=1;
+for(ll i=0;i<adj[s].size();i++)
+{
+if(!mark[adj[s][i]]){
+depth[adj[s][i]]=depth[s]+1;
+dfs(adj[s][i]);}
+}
+}
 int main()
 {
-ll t;
-cin>>t;
-while(t--)
-{
-	char a[9][9];
-	for(int i=0;i<9;i++)
+
+	ll n,m;
+	cin>>n>>m;
+	ll l=n-m-1;
+	for(ll i=1;i<n;i++)
 	{
-		for(int j=0;j<9;j++)
+		int x,y;
+		cin>>x>>y;
+		adj[x].pb(y);
+		adj[y].pb(x);
+	}
+	if(l==0)
+	{
+		cout<<m;
+	}
+	else
+	{
+	dfs(1);
+	map<ll,ll>ma;
+	for(ll i=1;i<=n;i++)
+	ma[depth[i]]++;
+	pre[n]=0;
+	for(ll i=n-1;i>=1;i--)
+	{
+		pre[i]=pre[i+1]+ma[i];
+	}
+	ll ans=0;
+	for(ll i=n-1;i>=1;i--)
+	{
+		if(pre[i]>m)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+			ans+=m*i+pre[i+1];
+			break;
+		}
+		else if(pre[i]==m)
+		{
+			ans+=m*i;
+			break;
 		}
 	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
-	}
-}
+	cout<<ans;
+    }
 return 0;
 }
-

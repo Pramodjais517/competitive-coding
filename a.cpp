@@ -98,27 +98,63 @@ void input_array(int a[],int n)
 	cin>>a[i];
 }
 
+
 void solve()
 {
-	ll n;
+	
+	int n;
 	cin>>n;
 
-	ll m=n/2;
-	ll a=m,b=n-m;
+	ll a[n];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	ll cur=a[0],sum=a[0],pos=0,neg=0;
+	if(cur>=0)
+	{
+		pos=1;
+	}
+	else 
+	{
+		neg=1;
+	}
+
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]>0 && pos==1)
+		{
+			sum-=cur;
+			cur=max(cur,a[i]);
+			sum+=cur;
+		}
+		else if( a[i]<0 && pos==1)
+		{
+			sum+=a[i];
+			cur=a[i];
+			neg=1;
+			pos=0;
+		}
+		else if(a[i]<0 && neg==1)
+		{
+			sum-=cur;
+			cur=max(cur,a[i]);
+			sum+=cur;
+		}
+		else if(a[i]>0 && neg==1)
+		{
+			sum+=a[i];
+			cur=a[i];
+			pos=1;
+			neg=0;
+		}
+
+		// cout<<i<<" "<<a[i]<<" "<<cur<<" "<<sum<<endl;
+	}
+	cout<<sum<<endl;
 	
-	if(a<b)
-	cout<<a<<endl;
-	else if(a==b)
-	cout<<a-1<<endl;
-
-
-
 }
-
 
 int main()
 {
-	
 	int t; cin>>t; while(t--)
 	solve();
 	

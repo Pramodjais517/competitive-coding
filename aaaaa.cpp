@@ -34,21 +34,19 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	ll n;
+	cin>>n;
+	ll div=0,i=0;
+	while(1)
 	{
-		for(int j=0;j<9;j++)
+		div+= pow(2,i);
+		i++;
+		if(n%div == 0 and div!=1)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+			cout<<n/div<<"\n";
+			break;
 		}
-	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
+		
 	}
 }
 return 0;

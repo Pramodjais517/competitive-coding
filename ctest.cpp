@@ -34,22 +34,21 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	ll n;
+	cin>>n;
+	map<ll,ll> m;
+	ll x;
+	fi(i,0,n,1)
 	{
-		for(int j=0;j<9;j++)
-		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
-		}
+		ci>>x;
+		m[x] ++;
 	}
-	for(int i=0;i<9;i++)
+	for(auto& i: m)
 	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
+		mx = max(mx,i.second);
 	}
+	ll ds =m.size();
+	
 }
 return 0;
 }

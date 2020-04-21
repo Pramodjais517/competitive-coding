@@ -34,22 +34,38 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	ll x,n,m;
+	cin>>x>>n>>m;
+	if(x<=10)
 	{
-		for(int j=0;j<9;j++)
+	   if(n>0 and m==0)
+	   {
+	   	 cout<<"NO\n";
+		 continue;
+	   }
+	   else if(m>0)
+	   {
+	   	cout<<"YES\n";
+	   	continue;
+	   }
+	}
+	while(x>0 and n>0)
+	{
+		x = floor(x/2)+10;
+		n--;
+	}
+	if(x>0)
+	{
+		while(x>0 and m>0)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+		 x-=10;	
+		 m--;
 		}
 	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
-	}
+	if(x>0)
+	cout<<"NO\n";
+	else
+	cout<<"YES\n";
 }
 return 0;
 }

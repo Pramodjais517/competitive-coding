@@ -34,22 +34,31 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	ll n;
+	cin>>n;
+	if(n/2 % 2 != 0)
 	{
-		for(int j=0;j<9;j++)
+		cout<<"NO\n";
+		continue;
+	}
+	else
+	{
+		ll es=0,os=0;
+		cout<<"YES\n";
+		for(ll i=1;i<= n/2;i++)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+
+			cout<<(2*i)<<" ";
+			
+			es+= (2*i);
 		}
-	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
-	}
+		for(ll i=1;i<n/2;i++)
+		{
+			cout<<(2*i)-1<<" ";
+			os=os+(2*i)-1;
+		}
+		cout<<(es-os)<<"\n";
+		}
 }
 return 0;
 }

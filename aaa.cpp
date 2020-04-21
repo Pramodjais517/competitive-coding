@@ -34,22 +34,9 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
-		}
-	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
-	}
+	ll a,b,c,d;
+	cin>>a>>b>>c>>d;
+	cout<<b<<" "<<c<<" "<<c<<"\n";
 }
 return 0;
 }

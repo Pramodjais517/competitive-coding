@@ -34,22 +34,37 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	ll ans=0,i=0;
+	while(i<n)
 	{
-		for(int j=0;j<9;j++)
+		if(a[i]>0 and i<n)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+			ll ma = a[i];
+			while(a[i]>0 and i<n)
+			{
+				ma = max(ma,a[i]);
+				i++;
+			}
+			ans+=ma;
+		}
+		else if(a[i]<0 and i<n)
+		{
+			ll mi = a[i];
+			while(a[i]<0 and i<n)
+			{
+				mi = max(mi,a[i]);
+				i++;
+			}
+			ans+=mi;
+			
 		}
 	}
-	for(int i=0;i<9;i++)
-	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
-		cout<<"\n";
-	}
+	cout<<ans<<"\n";
 }
 return 0;
 }

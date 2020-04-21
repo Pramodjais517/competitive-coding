@@ -34,20 +34,22 @@ ll t;
 cin>>t;
 while(t--)
 {
-	char a[9][9];
-	for(int i=0;i<9;i++)
+	char s[9][9];
+	fi(i,0,9,1)
 	{
-		for(int j=0;j<9;j++)
+		fi(j,0,9,1)
 		{
-			cin>>a[i][j];
-			if(a[i][j] == '2')
-				a[i][j] == '3';
+			cin>>s[i][j];
+			if(s[i][j] == '1')
+			s[i][j] = '2';
 		}
 	}
-	for(int i=0;i<9;i++)
+	fi(i,0,9,1)
 	{
-		for(int j=0;j<9;j++)
-		cout<<a[i][j];
+		fi(j,0,9,1)
+		{
+			cout<<s[i][j];
+		}
 		cout<<"\n";
 	}
 }
