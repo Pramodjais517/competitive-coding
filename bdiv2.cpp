@@ -15,6 +15,7 @@ using namespace std;
 #define mod 1000000007
 ll N = 1000000;
 vector<bool> prime(N+1,true);
+
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -27,38 +28,64 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
 	return 1;
 	if(b==1)
 	return a;
-	ll r = exp(a,b/2);
+	ll r = pow(a,b/2);
 	if(b&1)
 	return r*a*r;
 	return r*r;
 }
 // template ends here
 
+
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
+ll t;
+cin>>t;
+while(t--)
+{
+	string s;
+	cin>>s;
+	ll n =s.length();
+	if(s[0]=='1' or s[s.length()-1]=='1')
 	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
+		ll cnt=1;
+		if(s[0]=='1')
+		fi(i,1,n,1)
+		{
+			if(s[i]=='1')
+			cnt++;
+		}
+		else if(s[n-1]=='1')
+		fi(i,0,n-1,1)
+		{
+			if(s[i]=='1')
+			cnt++;
+		}
+		if(cnt == n)
+		cout<<"0\n";
+		else
+		{
+			ll z = n-cnt;
+			cout<<min(cnt-1,z)<<"\n";
+		}
 	}
+	else{
+		ll cnt=0;
+		fi(i,1,n,1)
+		{
+			if(s[i]=='1')
+			cnt++;
+		}
+		ll z = n-cnt;
+		cout<<min(z,cnt)<<"\n";
+	}
+}
 return 0;
 }
 

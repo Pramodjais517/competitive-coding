@@ -14,9 +14,11 @@ using namespace std;
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
 ll N = 1000000;
-vector<bool> prime(N+1,true);
+bool prime[1000000];
+
 void sieve()
 {
+	memset(prime,true,sizeof(prime));
 	prime[0] = false,prime[1] = false;
 	for(ll i=2;i*i <= N;i++)
 	{
@@ -27,38 +29,36 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
 	return 1;
 	if(b==1)
 	return a;
-	ll r = exp(a,b/2);
+	ll r = pow(a,b/2);
 	if(b&1)
 	return r*a*r;
 	return r*r;
 }
 // template ends here
 
+
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
-	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
-	}
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n,m;
+	cin>>n>>m;
+	if(n==1)
+	cout<<0<<"\n";
+	else if(n==2)
+	cout<<m<<"\n";
+	else
+	cout<<m*2<<"\n";
+}
 return 0;
 }
 

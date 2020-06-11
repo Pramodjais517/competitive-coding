@@ -15,6 +15,7 @@ using namespace std;
 #define mod 1000000007
 ll N = 1000000;
 vector<bool> prime(N+1,true);
+
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -27,38 +28,36 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
 	return 1;
 	if(b==1)
 	return a;
-	ll r = exp(a,b/2);
+	ll r = pow(a,b/2);
 	if(b&1)
 	return r*a*r;
 	return r*r;
 }
 // template ends here
+set<ll> SUM(int x1,int y1,int x2,int y2){
+  if(x1==x2 && y1==y2) {return 1;}
+  int a = (x2>x1) ? SUM(x1+1,y1,x2,y2) : 0;
+  int b = (y2>y1) ? SUM(x1,y1+1,x2,y2) : 0; 
+  return s.insert(a+b);
+}
 
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
-	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
-	}
+ll t;
+cin>>t;
+while(t--)
+{
+	ll a1,b1,a2,b2;
+	cin>>a1>>b1>>a2>>b2;
+	cout<<SUM(a1,b1,a2,b2)<<"\n";
+}
 return 0;
 }
 

@@ -15,6 +15,7 @@ using namespace std;
 #define mod 1000000007
 ll N = 1000000;
 vector<bool> prime(N+1,true);
+
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -27,6 +28,7 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
@@ -40,25 +42,40 @@ ll exp(ll a, ll b)
 }
 // template ends here
 
+
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n;
+	cin>>n;
+	set<ll> s;
+	ll a[n];
+	fi(i,0,n,1)
 	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
+		cin>>a[i];
 	}
+	bool f = true;
+	fi(i,1,n,1)
+	{
+		if(a[i]< a[i-1])
+		f=false;
+	}
+	fi(i,0,n,1)
+	{
+		ll x;
+		cin>>x;
+		s.insert(x);
+	}
+	if(s.size()==1 and f)
+	cout<<"Yes\n";
+	else if(s.size()==2)
+	cout<<"Yes\n";
+	else
+	cout<<"No\n";
+}
 return 0;
 }
 

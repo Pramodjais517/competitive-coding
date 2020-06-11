@@ -15,6 +15,7 @@ using namespace std;
 #define mod 1000000007
 ll N = 1000000;
 vector<bool> prime(N+1,true);
+
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -27,38 +28,54 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
 	if(b==0)
 	return 1;
 	if(b==1)
 	return a;
-	ll r = exp(a,b/2);
+	ll r = pow(a,b/2);
 	if(b&1)
 	return r*a*r;
 	return r*r;
 }
 // template ends here
 
+
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n,k;
+	cin>>n>>k;
+	ll i=1;
+	bool flag = false;
+	ll temp,mn,mx;
+	while(i<k)
 	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
+		temp = n;
+		mn = LONG_MAX;
+		mx = LONG_MIN;
+		while(temp)
+		{
+		 ll d = temp%10;
+		 temp = temp/10;
+		 mn = min(mn,d);
+		 mx = max(mx,d);	
+		}
+		if(mn == 0)
+		{
+			flag=1;
+			break;
+		}
+		n = n+ mn*mx;
+		i++;	
 	}
+	cout<<n<<"\n";
+}
 return 0;
 }
 

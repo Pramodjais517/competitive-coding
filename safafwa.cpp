@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 // template starts here
-#define ll long long
+#define ll signed long long
 #define ull unsigned long long
 #define rs reserve
 #define pb push_back
@@ -15,6 +15,7 @@ using namespace std;
 #define mod 1000000007
 ll N = 1000000;
 vector<bool> prime(N+1,true);
+
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -27,38 +28,48 @@ void sieve()
 		}
 	}
 }
+
 ll exp(ll a, ll b)
 {
-	if(b==0)
-	return 1;
-	if(b==1)
-	return a;
-	ll r = exp(a,b/2);
-	if(b&1)
-	return r*a*r;
-	return r*r;
+    if (b == 0)
+        return 1;
+    else
+        return a * exp(a, b - 1);
 }
 // template ends here
 
+
 int main()
 {
-	ll n,q;
-	cin>>n>>q;
-	vector<ll> a(n+1);
-	fie(i,1,n,1)
-	cin>>a[i];
-	vector<ll> pre(n+1),suf(n+2);
-	pre[0]= suf[n+1] = 0 ;
-	fie(i,1,n,1)
-	pre[i] = __gcd(pre[i-1],a[i]);
-	fde(i,n,1,1)
-	suf[i] = __gcd(a[i],suf[i+1]);
-	while(q--)
+ll t;
+cin>>t;
+ll extra=0;
+while(t--)
+{
+	ll s,n,k,r;
+	cin>>s>>n>>k>>r;
+	ll req=0,i=k;
+	while(n--)
 	{
-		ll l,r;
-		cin>>l>>r;
-		cout<<__gcd(pre[l-1],suf[r+1])<<"\n";
+		req+=i;
+		i*=r;
 	}
+	if(req<=s)
+	{
+		extra+= (s-req);
+		cout<<"POSSIBLE "<<(s-req)<<"\n";
+	}
+	else
+	{
+		extra-=abs(req - s);
+		cout<<"IMPOSSIBLE "<<abs(req - s)<<"\n";	
+	}
+}
+if(extra>=0)
+cout<<"POSSIBLE\n";
+else
+cout<<"IMPOSSIBLE\n";
+
 return 0;
 }
 
