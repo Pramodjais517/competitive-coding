@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+	#include<bits/stdc++.h>
 using namespace std;
 // template starts here
 #define ll long long
@@ -47,28 +47,18 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+ll n=5,sum=0;
+fi(i,0,n,1)
 {
-	ll n,x,m;
-	cin>>n>>x>>m;
-	pair<ll,ll> p;
-	p.first = x,p.second = x;
-	for(int i=1;i<=m;i++)
-	{
-		ll l,r;
-		cin>>l>>r;
-		if(p.first <= r and p.second >= l)
-		{
-			if(l <= p.first)
-			p.first = l;
-			if(r >= p.second)
-			p.second = r;
-		}
-	}
-	cout<<p.second - p.first + 1 <<"\n";
+	ll x;
+	cin>>x;
+	sum+=x;
 }
+if(sum%5==0 and sum!=0)
+cout<<sum/5;
+else
+cout<<"-1";
+
 return 0;
 }
 

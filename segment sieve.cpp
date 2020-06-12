@@ -13,7 +13,7 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define show(ar) for(auto &i:ar) cout<<i<<" "
 #define mod 1000000007
-ll N = 1000000;
+ll N = 100000;
 vector<bool> prime(N+1,true);
 
 void sieve()
@@ -29,45 +29,43 @@ void sieve()
 	}
 }
 
-ll pow(ll a, ll b)
-{
-	if(b==0)
-	return 1;
-	if(b==1)
-	return a;
-	ll r = pow(a,b/2);
-	if(b&1)
-	return r*a*r;
-	return r*r;
-}
-// template ends here
-
-
 int main()
 {
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
+//ios_base::sync_with_stdio(false);
+//cin.tie(NULL);
+sieve();
 ll t;
 cin>>t;
 while(t--)
 {
-	ll n,x,m;
-	cin>>n>>x>>m;
-	pair<ll,ll> p;
-	p.first = x,p.second = x;
-	for(int i=1;i<=m;i++)
+	ll l, r;
+	cin>>l>>r;
+	if(l==1)
+	l++;
+	vector<ll> pr;
+	for(ll i=2;i*i<=r;i++)
 	{
-		ll l,r;
-		cin>>l>>r;
-		if(p.first <= r and p.second >= l)
+		if(prime[i])
+		pr.pb(i);
+	}
+	vector<ll> seg(r-l+1,1);
+	for(ll i=0;i<pr.size();i++)
+	{
+		ll j =  (l/pr[i]) * pr[i];
+		if(j<l)
+		j+=pr[i]; 
+		for(;j<=r;j+=pr[i])
 		{
-			if(l <= p.first)
-			p.first = l;
-			if(r >= p.second)
-			p.second = r;
+			if(j!=pr[i])
+			seg[j-l] = 0;
 		}
 	}
-	cout<<p.second - p.first + 1 <<"\n";
+	fi(i,0,seg.size(),1)
+	{
+		if(seg[i])
+		cout<<l+i<<" ";
+	}
+	cout<<"\n";
 }
 return 0;
 }

@@ -47,28 +47,25 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+ll n = 6;
+ll a[n];
+map<ll,ll> m;
+fi(i,0,n,1)
 {
-	ll n,x,m;
-	cin>>n>>x>>m;
-	pair<ll,ll> p;
-	p.first = x,p.second = x;
-	for(int i=1;i<=m;i++)
-	{
-		ll l,r;
-		cin>>l>>r;
-		if(p.first <= r and p.second >= l)
-		{
-			if(l <= p.first)
-			p.first = l;
-			if(r >= p.second)
-			p.second = r;
-		}
-	}
-	cout<<p.second - p.first + 1 <<"\n";
+	cin>>a[i];
+	m[a[i]]++;
 }
+string s;
+for(auto i:m)
+{
+	s.pb((char)('0' + i.second));
+}
+if(s=="114" or s=="141" or s=="411" or s=="51" or s=="15")
+cout<<"Bear";
+else if(s=="24" or s=="42" or s=="6")
+cout<<"Elephant";
+else
+cout<<"Alien";
 return 0;
 }
 

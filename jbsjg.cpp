@@ -47,28 +47,15 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
-{
-	ll n,x,m;
-	cin>>n>>x>>m;
-	pair<ll,ll> p;
-	p.first = x,p.second = x;
-	for(int i=1;i<=m;i++)
-	{
-		ll l,r;
-		cin>>l>>r;
-		if(p.first <= r and p.second >= l)
-		{
-			if(l <= p.first)
-			p.first = l;
-			if(r >= p.second)
-			p.second = r;
-		}
-	}
-	cout<<p.second - p.first + 1 <<"\n";
-}
+
+	string s,rev;
+	cin>>s>>rev;
+	reverse(s.begin(),s.end());
+	if(s==rev)
+	cout<<"YES\n";
+	else
+	cout<<"NO\n";
+
 return 0;
 }
 

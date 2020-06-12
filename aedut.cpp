@@ -51,23 +51,17 @@ ll t;
 cin>>t;
 while(t--)
 {
-	ll n,x,m;
-	cin>>n>>x>>m;
-	pair<ll,ll> p;
-	p.first = x,p.second = x;
-	for(int i=1;i<=m;i++)
-	{
-		ll l,r;
-		cin>>l>>r;
-		if(p.first <= r and p.second >= l)
-		{
-			if(l <= p.first)
-			p.first = l;
-			if(r >= p.second)
-			p.second = r;
-		}
+	ll s,d;
+	cin>>s>>d;
+    if(s==0 or d==0)
+    {
+    	cout<<0<<"\n";
+		    	continue;
 	}
-	cout<<p.second - p.first + 1 <<"\n";
+	if(s>=(s+d)/3 and d>= (s+d)/3)
+	cout<<(s+d)/3<<"\n";
+	else
+	cout<<(min(s,d))<<"\n";
 }
 return 0;
 }
