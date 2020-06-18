@@ -49,7 +49,22 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout<<!0;
+string s;
+cin>>s;
+vector<ll> a;
+fi(i,0,s.length(),1)
+{
+	if(s[i]!='+')
+	a.pb(s[i] - '0');
+}
+sort(a.begin(),a.end());
+fi(i,0,a.size(),1)
+{
+	if(i!=(a.size()-1))
+	cout<<a[i]<<"+";
+	else
+	cout<<a[i];
+}
 return 0;
 }
 

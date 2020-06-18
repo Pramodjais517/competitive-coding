@@ -49,7 +49,39 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout<<!0;
+ll n;
+cin>>n;
+ll a[n];
+fi(i,0,n,1)
+cin>>a[i];
+ll f =0;
+fi(i,1,n,1)
+{
+	f = a[i] - a[i-1];
+}
+if(f==0)
+{
+	if(a[n-1]==15)
+	cout<<"DOWN\n";
+	else if(a[n-1]==0)
+	cout<<"UP";
+	else
+	cout<<"-1";
+}
+else if(f>0)
+{
+	if(a[n-1]!=15)
+	cout<<"UP";
+	else
+	cout<<"DOWN";
+}
+else if(f<0)
+{
+	if(a[n-1]!=0)
+	cout<<"DOWN";
+	else
+	cout<<"UP";
+}
 return 0;
 }
 

@@ -49,7 +49,46 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout<<!0;
+ll t;
+cin>>t;
+map<char,ll> m;
+m['a'] = 0;
+m['e'] = 1;
+m['i'] = 2;
+m['o'] = 3;
+m['u'] = 4;
+while(t--)
+{
+	ll n;
+	cin>>n;
+	string s;
+	ll mp[32];
+	memset(mp,0,sizeof(mp));
+	fi(i,0,n,1)
+	{
+		cin>>s;
+		ll num=0;
+		for(auto i:s)
+		{
+			num = num|1<<m[i];
+		}
+		mp[num]++;
+	}
+	ll ans = 0;
+	for(ll i= 1;i<32;i++)
+	{
+		for(ll j=i+1;j<32;j++)
+		{
+			if((i | j) == 31)
+			{
+				ans += (mp[i]*mp[j]);
+			}
+		}
+	}
+	ans += (mp[31] * (mp[31]-1))/2;
+	cout<<ans<<"\n";
+}
+
 return 0;
 }
 

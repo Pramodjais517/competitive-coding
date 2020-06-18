@@ -57,38 +57,32 @@ while(t--)
 	cin>>n>>k;
 	string s;
 	cin>>s;
-	if(n==1)
-	{
-		cout<<1<<"\n";
-		continue;
-	}
-	if(k>=n)
-	{
-		cout<<1<<"\n";
-		continue;
-	}
-	ll in = -1,ans=0,i=0;
+	ll i=0,cnt=0;
 	while(i<n)
 	{
 		if(s[i]=='1')
 		{
-			if(in!= -1)
-			{
-				ans+=(i-in-1)/ (2*k + 1);
-			}
-			else{
-				ans+= i/(2*k + 1);
-			}
-			in = i;
+		i+=k+1;
+		continue;
 		}
-		i++;	
+		ll f = 1;
+		for(ll j=i+1;j<=(i+k);j++)
+		{
+			if(j<n and s[j]=='1')
+			{
+				f=0,i=j;
+				break;
+			}
+		}
+		if(f)
+		{
+			cnt++;
+			s[i] = '1';
+			i+=k+1;
+		}
 	}
-	if(in == -1)
-	{
-		ans++,in=0;
-	}	
-	ans+=(n-in-1)/(2*k+1);
-	cout<<ans<<"\n";
+	cout<<cnt<<"\n";
+		
 }
 return 0;
 }

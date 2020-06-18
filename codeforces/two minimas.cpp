@@ -49,7 +49,28 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout<<!0;
+ll n;cin>>n;
+ll m = LONG_MAX;
+ll a[n];
+fi(i,0,n,1)
+{
+	cin>>a[i];
+	m = min(m,a[i]);
+}
+ll in=-1,ans=LONG_MAX;
+fi(i,0,n,1)
+{
+	if(a[i]==m)
+	{
+		if(in==-1)
+		in = i;
+		else
+		{
+			ans = min(ans,i-in),in = i;
+		}
+	}
+}
+cout<<ans<<"\n";
 return 0;
 }
 

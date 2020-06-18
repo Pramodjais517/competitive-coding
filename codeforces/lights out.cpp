@@ -49,7 +49,39 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout<<!0;
+ll a[3][3] = {{1,1,1},{1,1,1},{1,1,1}};
+ll in[3][3];
+fi(i,0,3,1)
+{
+	fi(j,0,3,1)
+	{
+		cin>>in[i][j];
+	}
+}
+fi(i,0,3,1)
+{
+	fi(j,0,3,1)
+	{
+			if(in[i][j]%2!=0)
+			{
+				a[i][j]=!a[i][j];
+				if((i+1)<3)
+				a[i+1][j]= !a[i+1][j];
+				if((i-1)>=0)
+				a[i-1][j]= !a[i-1][j];
+				if((j+1)<3)
+				a[i][j+1]=!a[i][j+1];
+				if((j-1)>=0)
+				a[i][j-1]=!a[i][j-1];
+			}
+	}
+}
+fi(i,0,3,1)
+{
+	fi(j,0,3,1)
+	cout<<a[i][j];
+	cout<<"\n";
+}
 return 0;
 }
 
