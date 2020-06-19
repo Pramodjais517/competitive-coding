@@ -50,22 +50,33 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 ll n;
-cin>>n;
-ll a=0;
-ll prob =0 ;
-fi(i,0,n,1)
+ll sum;
+cin>>sum>>n;
+ll coin[n+1];
+fi(i,1,n+1,1)
+cin>>coin[i];
+ll dp[n+1][sum+1];
+memset(dp,0,sizeof(dp));
+fie(j,1,sum,1)
 {
-	ll cnt=0;
-	fi(j,0,3,1)
-	{
-		cin>>a;
-		if(a==1)
-		cnt++;
-	}
-	if(cnt>=2)
-	prob++;
+	if(j%coin[1]==0)
+	dp[1][j] = j/coin[1];
+	else
+	dp[1][j] = -1;
 }
-cout<<prob<<"\n";
+fie(i,2,n,1)
+{
+	fie(j,0,sum,1)
+	{
+		if(j<coin[i])
+		dp[i][j] = dp[i-1][j];
+		else
+		{
+			dp[i][j] = min(dp[i-1][j],1+dp[i][j-coin[i]]);
+		}
+	}
+}
+cout<<dp[n][sum]<<"\n";
 return 0;
 }
 
