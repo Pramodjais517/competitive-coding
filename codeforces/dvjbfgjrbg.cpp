@@ -49,36 +49,52 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n, sum;
-cin>>n>>sum;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[sum+1];
-for(int i=0;i<=sum;i++)
-dp[i] = 0;
-dp[0] = 1;
-for(int i=0;i<n;i++)
+ll t;
+cin>>t;
+while(t--)
 {
-	ll curr = a[i];
-	for(int j=sum;(j-curr)>=0;j--)
+	ll n;
+	cin>>n;
+	ll a[2*n];
+	fi(i,0,2*n,1)
+	cin>>a[i];
+	vector<ll> odd,even;
+	fi(i,0,2*n,1)
 	{
-		if(dp[j]==0 and dp[j-curr]!=0)
-			dp[j] = curr;
+		if(a[i]%2!=0)
+		odd.pb(i+1);
+		else
+		even.pb(i+1);
+	}
+	if(even.size()==0)
+	{
+		fi(i,0,odd.size()-2,2)
+		cout<<odd[i]<<" "<<odd[i+1]<<"\n";
+	}
+	else if(odd.size()==0)
+	{
+		fi(i,0,even.size()-2,2)
+		cout<<even[i]<<" "<<even[i+1]<<"\n";
+	}else
+	{
+	if(odd.size()%2==0)
+	{
+		fi(i,0,odd.size(),2)
+		cout<<odd[i]<<" "<<odd[i+1]<<"\n";	
+		fi(i,0,even.size()-2,2)
+		cout<<even[i]<<" "<<even[i+1]<<"\n";		
+	}
+	else
+	{
+		fi(i,1,odd.size(),2)
+		cout<<odd[i]<<" "<<odd[i+1]<<"\n";	
+		fi(i,1,even.size()-1,2)
+		cout<<even[i]<<" "<<even[i+1]<<"\n";
+	
+	}
 	}
 }
-//fie(i,0,sum,1)
-//cout<<dp[i]<<" ";
-if(dp[sum]!=0)
-{
-	while(sum>0)
-	{
-		cout<<dp[sum]<<" ";
-		sum -= dp[sum];
-	}	
-}
-else
-cout<<0<"\n";
 return 0;
 }
+
 

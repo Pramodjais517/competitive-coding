@@ -44,41 +44,58 @@ ll pow(ll a, ll b)
 }
 // template ends here
 
-
+ll odiv(ll  n)
+{
+	ll div=0;
+	for(ll i=2;i*i<=n;i++)
+	{
+		if(n%i ==  0)
+		{
+		if(i*i==n)
+		{
+			if(i%2!=0)
+			div++;
+		}
+		else
+		{
+		if(i%2!=0)
+		div++;
+		if((n/i)%2!=0)
+		div++;	
+		}
+		}
+	}
+	return div;
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n, sum;
-cin>>n>>sum;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[sum+1];
-for(int i=0;i<=sum;i++)
-dp[i] = 0;
-dp[0] = 1;
-for(int i=0;i<n;i++)
+ll t;
+cin>>t;
+while(t--)
 {
-	ll curr = a[i];
-	for(int j=sum;(j-curr)>=0;j--)
+	ll n;
+	cin>>n;
+	if(n==1)
 	{
-		if(dp[j]==0 and dp[j-curr]!=0)
-			dp[j] = curr;
+		cout<<"FastestFinger\n";
+		continue;
+	}
+	else if(n&1 or n==2)
+	{
+		cout<<"Ashishgup\n";
+		continue;
+	}
+	else
+	{
+		ll div = odiv(n);
+		if(div == 0)
+		cout<<"FastestFinger\n";
+		else
+		cout<<"Ashishgup\n";
 	}
 }
-//fie(i,0,sum,1)
-//cout<<dp[i]<<" ";
-if(dp[sum]!=0)
-{
-	while(sum>0)
-	{
-		cout<<dp[sum]<<" ";
-		sum -= dp[sum];
-	}	
-}
-else
-cout<<0<"\n";
 return 0;
 }
 
