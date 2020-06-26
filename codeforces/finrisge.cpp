@@ -43,29 +43,28 @@ ll pow(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
-ll odiv(ll  n)
+bool factor(ll n)
 {
-	ll div=0;
-	for(ll i=2;i*i<=n;i++)
+	ll c2=0,co=0;
+	while(n%2 == 0)
 	{
-		if(n%i ==  0)
+		c2++;
+		n/=2;
+	}
+	for(ll i=3;i<=sqrt(n);i+=2)
+	{
+		while(n%i == 0)
 		{
-		if(i*i==n)
-		{
-			if(i%2!=0)
-			div++;
-		}
-		else
-		{
-		if(i%2!=0)
-		div++;
-		if((n/i)%2!=0)
-		div++;	
-		}
+			 co++;
+			 n/=i;
 		}
 	}
-	return div;
+	if(n>2)
+	co++;
+	if(c2==1 and co==1)
+	return false;
+	else
+	return true;
 }
 int main()
 {
@@ -80,20 +79,22 @@ while(t--)
 	if(n==1)
 	{
 		cout<<"FastestFinger\n";
-		continue;
 	}
 	else if(n&1 or n==2)
 	{
 		cout<<"Ashishgup\n";
-		continue;
+	}
+	else if((n&(n-1))==0)
+	{
+		cout<<"FastestFinger\n";
 	}
 	else
 	{
-		ll div = odiv(n);
-		if(div == 0)
-		cout<<"FastestFinger\n";
-		else
+		bool b = factor(n);
+		if(b)
 		cout<<"Ashishgup\n";
+		else
+		cout<<"FastestFinger\n";
 	}
 }
 return 0;

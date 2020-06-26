@@ -49,34 +49,12 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n, sum;
-cin>>n>>sum;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[sum+1];
-for(int i=0;i<=sum;i++)
-dp[i] = 0;
-dp[0] = 1;
-for(int i=0;i<n;i++)
+ll t;
+cin>>t;
+while(t--)
 {
-	ll curr = a[i];
-	for(int j=sum;(j-curr)>=0;j--)
-	{
-		if(dp[j]==0 and dp[j-curr]!=0)
-			dp[j] = curr;
-	}
+	
 }
-if(dp[sum]!=0)
-{
-	while(sum>0)
-	{
-		cout<<dp[sum]<<" ";
-		sum -= dp[sum];
-	}	
-}
-else
-cout<<0<"\n";
 return 0;
 }
 

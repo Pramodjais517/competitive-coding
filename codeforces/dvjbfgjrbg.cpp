@@ -66,32 +66,14 @@ while(t--)
 		else
 		even.pb(i+1);
 	}
-	if(even.size()==0)
+	vector<pair<ll,ll>> p;
+	for(ll i=0;(i+1)<odd.size();i+=2)
+	p.pb({odd[i],odd[i+1]});
+	for(ll i=0;(i+1)< even.size();i+=2)
+	p.pb({even[i],even[i+1]});
+	fi(i,0,n-1,1)
 	{
-		fi(i,0,odd.size()-2,2)
-		cout<<odd[i]<<" "<<odd[i+1]<<"\n";
-	}
-	else if(odd.size()==0)
-	{
-		fi(i,0,even.size()-2,2)
-		cout<<even[i]<<" "<<even[i+1]<<"\n";
-	}else
-	{
-	if(odd.size()%2==0)
-	{
-		fi(i,0,odd.size(),2)
-		cout<<odd[i]<<" "<<odd[i+1]<<"\n";	
-		fi(i,0,even.size()-2,2)
-		cout<<even[i]<<" "<<even[i+1]<<"\n";		
-	}
-	else
-	{
-		fi(i,1,odd.size(),2)
-		cout<<odd[i]<<" "<<odd[i+1]<<"\n";	
-		fi(i,1,even.size()-1,2)
-		cout<<even[i]<<" "<<even[i+1]<<"\n";
-	
-	}
+		cout<<p[i].ff<<" "<<p[i].ss<<"\n";
 	}
 }
 return 0;
