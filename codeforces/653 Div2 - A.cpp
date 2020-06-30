@@ -57,7 +57,7 @@ while(t--)
 	cin>>x>>y>>n;
 	ll ans =0 ,a =  n%x;
     if(a>=y)
-        ans=n-(a-y);
+        ans=n-(a-y);	
     else
         ans=n-x-(a-y);  
 	cout<<ans<<"\n";
