@@ -49,24 +49,24 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n;cin>>n;
-ll a[n];
+ll n;
+cin>>n;
+ll a[3002];
+memset(a,0,sizeof(a));
+ll x;
 fi(i,0,n,1)
-cin>>a[i];
-ll dp[n];
-memset(dp,0,sizeof(dp));
-ll m = 0;
-for(int i=1;i<n;i++)
 {
-	dp[i] = a[i] - a[m];
-	if(dp[i]<0)
-	dp[i] = 0;
-	if(a[i] < a[m])
-	m = i;
+	cin>>x;
+	a[x] = 1;
 }
-sort(dp,dp+n);
-cout<<dp[n-1]<<"\n";
-
+fi(i,1,3002,1)
+{
+	if(a[i]==0)
+	{	
+		cout<<i<<"\n";
+		break;
+	}
+}
 return 0;
 }
 

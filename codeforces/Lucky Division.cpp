@@ -49,24 +49,37 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n;cin>>n;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[n];
-memset(dp,0,sizeof(dp));
-ll m = 0;
-for(int i=1;i<n;i++)
+ll n;
+cin>>n;
+bool ans=0;
+fie(i,1,n/4,1)
 {
-	dp[i] = a[i] - a[m];
-	if(dp[i]<0)
-	dp[i] = 0;
-	if(a[i] < a[m])
-	m = i;
+	if(n%i == 0)
+	{
+	ll num = n / i;
+	ans = 0;
+	bool f = 0;
+	while(num)
+	{
+		ll d = num%10;
+		num/=10;
+		if(d!=4 and d!=7)
+		{
+		f = 1;
+		break;	
+		}
+	}
+	if(!f)
+	{
+	ans = 1;
+	break;		
+	}
+	}
 }
-sort(dp,dp+n);
-cout<<dp[n-1]<<"\n";
-
+if(ans)
+cout<<"YES\n";
+else
+cout<<"NO\n";
 return 0;
 }
 

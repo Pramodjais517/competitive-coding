@@ -49,24 +49,37 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n;cin>>n;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[n];
-memset(dp,0,sizeof(dp));
-ll m = 0;
-for(int i=1;i<n;i++)
+ll x1,y1,x2,y2;
+cin>>x1>>y1>>x2>>y2;
+ll x3,y3,x4,y4;
+if(x1!=x2 and y1!=y2 and abs(x1-x2)!=abs(y1 - y2))
 {
-	dp[i] = a[i] - a[m];
-	if(dp[i]<0)
-	dp[i] = 0;
-	if(a[i] < a[m])
-	m = i;
+	cout<<"-1";
+	return 0;
 }
-sort(dp,dp+n);
-cout<<dp[n-1]<<"\n";
-
+if(y1 == y2)
+{
+	x3 = x1;
+	x4 = x2;
+	y3 = y1 + abs(x1-x2);
+	y4 = y2 + abs(x1-x2);
+	
+}
+else if(x1 == x2)
+{
+	y3 = y1;
+	y4 = y2;
+	x3 = x1 + abs(y1-y2);
+	x4 = x2 + abs(y1-y2);
+}
+else if((x1 - x2) == (y1 - y2))
+{
+	x3 = x1;
+	y3 = y2;
+	x4 = x2;
+	y4 = y1;
+}
+cout<<x3<<" "<< y3<<" "<<x4<<" "<<y4;
 return 0;
 }
 

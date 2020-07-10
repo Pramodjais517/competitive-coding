@@ -49,24 +49,28 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n;cin>>n;
-ll a[n];
-fi(i,0,n,1)
-cin>>a[i];
-ll dp[n];
-memset(dp,0,sizeof(dp));
-ll m = 0;
-for(int i=1;i<n;i++)
-{
-	dp[i] = a[i] - a[m];
-	if(dp[i]<0)
-	dp[i] = 0;
-	if(a[i] < a[m])
-	m = i;
-}
-sort(dp,dp+n);
-cout<<dp[n-1]<<"\n";
-
+string s;
+cin>>s;
+	ll t =0, ans=0;
+	if(s.length()>=2)
+	ans++;
+	fi(i,0,s.length(),1)
+	{
+		t+= (s[i] - '0');
+	}
+	while(t>=10)
+	{
+		ans++;
+		ll x = t;
+		ll sum = 0;
+		while(x)
+		{
+			sum+=x%10;
+			x/=10;
+		}
+		t = sum;
+	}
+	cout<<ans<<"\n";
 return 0;
 }
 
