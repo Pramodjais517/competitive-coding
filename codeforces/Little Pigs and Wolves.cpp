@@ -49,43 +49,47 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-	ll n;
-	cin>>n;
-	vector<ll> s1,s2,s3; ll a;
-	fi(i,0,n,1)
+ll n,m;
+cin>>n>>m;
+char a[n][m];
+fi(i,0,n,1)
+{
+	fi(j,0,m,1)
 	{
-		cin>>a ;
-		if(a<0)
-		s1.pb(a);
-		else if(a == 0)
-		s3.pb(a);
-		else
-		s2.pb(a);
+		cin>>a[i][j];
 	}
-	if(s2.size()==0)
+}
+ll ans = 0;
+fi(i,0,n,1)
+{
+	fi(j,0,m,1)
 	{
-		s2.push_back(s1[s1.size()-1]);
-		s1.pop_back();
-		s2.pb(s1[s1.size() - 1]);
-		s1.pop_back();
+		if(a[i][j] == 'W')
+		{
+			if(j-1 >= 0 and a[i][j-1] == 'P')
+			{
+				ans++;
+				a[i][j-1] = '.';
+			}
+			else if(j+1 < m and a[i][j+1] == 'P')
+			{
+				ans++;
+				a[i][j+1] = '.';
+			}
+			else if((i-1) >= 0 and a[i-1][j] == 'P')
+			{
+				ans++;
+				a[i-1][j] = '.';	
+			}
+			else if((i+1)<n and a[i+1][j] == 'P')
+			{
+				ans++;
+				a[i+1][j] == '.';
+			}
+		}
 	}
-	if(s1.size()%2 == 0 and s1.size()!=0)
-	{
-		s3.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	cout<<s1.size()<<" ";
-	fi(i,0,s1.size(),1)
-	cout<<s1[i]<<" ";
-	cout<<"\n";
-	cout<<s2.size()<<" ";
-	fi(i,0,s2.size(),1)
-	cout<<s2[i]<<" ";
-	cout<<"\n";
-	cout<<s3.size()<<" ";
-	fi(i,0,s3.size(),1)
-	cout<<s3[i]<<" ";
-	cout<<"\n";
+}
+cout<<ans<<"\n";
 return 0;
 }
 

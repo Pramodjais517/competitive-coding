@@ -16,9 +16,8 @@ using namespace std;
 #define mod 1000000007
 
 ll N = 1000000;
-ll k;
 vector<bool> prime(N+1,true);
-
+ll k;
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -44,31 +43,45 @@ ll pow(ll a, ll b)
 	return r*r;
 }
 // template ends here
-ll getans(ll n,ll lw)
+ll dp[100001];
+ll getans(ll n)
 {
-	if(n == 0)
+	if(n==0)
 	return 1;
-	ll x = getans(n-1,k);
-	ll y=0;
-	if(lw>0)
-	y = getans(n-1,lw-1);
-	return x+y;
+	if(dp[n] != -1)
+	return dp[n];
+	//W
+	ll ans = 0;
+	if(n>=k)
+	ans += getans(n - k);
+	// K
+	ans += getans(n - 1);
+	dp[n] = ans;
+	return ans;
 }
-
+ll final(ll dp[])
+{
+	fi(i,1,100001,1)
+	dp[i] = dp[i-1] + dp[i];
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t>>k;
-while(t--)
+ll n;
+cin>>n>>k;
+memset(dp, -1, sizeof(dp));
+getans(100001);
+dp[0] = 0;
+fi(i,0,100001,1)
 {
-	ll a, b;
+	cout<<dp[i]<<" ";
+}
+final(dp);	
+ll a, b;
+while(n--){
 	cin>>a>>b;
-	ll ans = 0;
-	for(int i=a;i<=b;i++)
-	ans += getans(i,k);
-	cout<<ans<<"\n";
+//	cout<<(dp[b] - dp[a-1])<<"\n";
 }
 return 0;
 }

@@ -17,7 +17,7 @@ using namespace std;
 
 ll N = 1000000;
 vector<bool> prime(N+1,true);
-
+ll k;
 void sieve()
 {
 	prime[0] = false,prime[1] = false;
@@ -43,49 +43,46 @@ ll pow(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
-
+ll dp[100001];
+ll getans(ll n)
+{
+	if(n<=0)
+	return 1;
+	if(dp[n] != -1)
+	return dp[n];
+	//W
+	ll ans = 0;
+	if(n>=k)
+	ans += getans(n - k);
+	// K
+	ans += getans(n - 1);
+	dp[n] = ans;
+	return ans;
+}
+ll final(ll dp[])
+{
+	fi(i,1,100001,1)
+	dp[i] = dp[i-1] + dp[i];
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-	ll n;
-	cin>>n;
-	vector<ll> s1,s2,s3; ll a;
-	fi(i,0,n,1)
-	{
-		cin>>a ;
-		if(a<0)
-		s1.pb(a);
-		else if(a == 0)
-		s3.pb(a);
-		else
-		s2.pb(a);
-	}
-	if(s2.size()==0)
-	{
-		s2.push_back(s1[s1.size()-1]);
-		s1.pop_back();
-		s2.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	if(s1.size()%2 == 0 and s1.size()!=0)
-	{
-		s3.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	cout<<s1.size()<<" ";
-	fi(i,0,s1.size(),1)
-	cout<<s1[i]<<" ";
-	cout<<"\n";
-	cout<<s2.size()<<" ";
-	fi(i,0,s2.size(),1)
-	cout<<s2[i]<<" ";
-	cout<<"\n";
-	cout<<s3.size()<<" ";
-	fi(i,0,s3.size(),1)
-	cout<<s3[i]<<" ";
-	cout<<"\n";
+ll n;
+cin>>n>>k;
+//memset(dp, -1, sizeof(dp));
+//getans(100001);
+//dp[0] = 0;
+//fi(i,0,100001,1)
+//{
+//	cout<<dp[i]<<" ";
+//}
+//final(dp);	
+ll a, b;
+while(n--){
+	cin>>a>>b;
+	cout<<(dp[b] - dp[a-1])<<"\n";
+}
 return 0;
 }
 

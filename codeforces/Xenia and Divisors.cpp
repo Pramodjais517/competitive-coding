@@ -49,43 +49,25 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-	ll n;
-	cin>>n;
-	vector<ll> s1,s2,s3; ll a;
-	fi(i,0,n,1)
-	{
-		cin>>a ;
-		if(a<0)
-		s1.pb(a);
-		else if(a == 0)
-		s3.pb(a);
-		else
-		s2.pb(a);
-	}
-	if(s2.size()==0)
-	{
-		s2.push_back(s1[s1.size()-1]);
-		s1.pop_back();
-		s2.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	if(s1.size()%2 == 0 and s1.size()!=0)
-	{
-		s3.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	cout<<s1.size()<<" ";
-	fi(i,0,s1.size(),1)
-	cout<<s1[i]<<" ";
-	cout<<"\n";
-	cout<<s2.size()<<" ";
-	fi(i,0,s2.size(),1)
-	cout<<s2[i]<<" ";
-	cout<<"\n";
-	cout<<s3.size()<<" ";
-	fi(i,0,s3.size(),1)
-	cout<<s3[i]<<" ";
-	cout<<"\n";
+ll n;
+cin>>n;
+ll a[8];
+ll x;
+fi(i,0,n,1)
+{
+	cin>>x;
+	a[x]++;
+}
+if(a[1] == n/3 and a[2]==a[1] and a[4] == a[1])
+{
+	cout<<1<<" "<<2<<" "<<4<<"\n";
+}
+else if(a[1] == n/3 and a[2]==a[1] and a[6] == a[1])
+cout<<1<<" "<<2<<" "<<4<<"\n";
+else if(a[1] == n/3 and a[3]==a[1] and a[6] == a[1])
+cout<<1<<" "<<3<<" "<<6<<"\n";
+else
+cout<<-1<<"\n";
 return 0;
 }
 

@@ -49,43 +49,31 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-	ll n;
-	cin>>n;
-	vector<ll> s1,s2,s3; ll a;
-	fi(i,0,n,1)
-	{
-		cin>>a ;
-		if(a<0)
-		s1.pb(a);
-		else if(a == 0)
-		s3.pb(a);
-		else
-		s2.pb(a);
-	}
-	if(s2.size()==0)
-	{
-		s2.push_back(s1[s1.size()-1]);
-		s1.pop_back();
-		s2.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	if(s1.size()%2 == 0 and s1.size()!=0)
-	{
-		s3.pb(s1[s1.size() - 1]);
-		s1.pop_back();
-	}
-	cout<<s1.size()<<" ";
-	fi(i,0,s1.size(),1)
-	cout<<s1[i]<<" ";
-	cout<<"\n";
-	cout<<s2.size()<<" ";
-	fi(i,0,s2.size(),1)
-	cout<<s2[i]<<" ";
-	cout<<"\n";
-	cout<<s3.size()<<" ";
-	fi(i,0,s3.size(),1)
-	cout<<s3[i]<<" ";
-	cout<<"\n";
+ll n;
+cin>>n;
+if(n==1){
+	cout<<1<<"\n";
+	return 0;	
+}
+ll a[n];
+fi(i,0,n,1)
+cin>>a[i];
+ll m = 0;
+ll cnt = 2;
+fi(i,2,n,1)
+{
+	if(a[i-1] + a[i-2] == a[i])
+	cnt++;
+	else
+	cnt = 2;
+	m  = max(m,cnt);
+}
+if(m==0)
+{
+	cout<<2<<"\n";	
+}
+else
+cout<<m<<"\n";
 return 0;
 }
 
