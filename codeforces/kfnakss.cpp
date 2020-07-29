@@ -17,9 +17,6 @@ using namespace std;
 
 ll N = 1000000;
 vector<bool> prime(N+1,true);
-ll vis[10001];
-ll dis[10001];
-vector<ll> node[10001];
 
 void sieve()
 {
@@ -45,56 +42,55 @@ ll pow(ll a, ll b)
 	return r*a*r;
 	return r*r;
 }
-
-void dfs(ll v)
-{
-	vis[v] = 1;
-	//dis[v] = d;
-	for(auto child:node[v])
-	{
-		if(vis[child] == 0)
-		{
-			dfs(child);
-		}
-	}
-}
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
-
+ll ar[10001];
+ll getans(ll pos,ll sum, ll n, bool flag)
+{
+	if(pos>n)
+	return sum;
+	ll ans = 0;
+	ll lim = 9;
+	if(!flag)
+	lim = ar[pos];
+	for(int i=0;i<=lim;i++)
+	{
+		if(flag or i < lim)
+		ans += getans(pos+1, sum+i, n, true);
+		else
+		ans += getans(pos+1, sum+i, n, false);
+	}
+	return ans;
+}
+ll dp[11][100][2];
+ll getans(string a){
+	ll ans = 0;
+	fi(i,0,a.length(),1){
+		ans+= a[i] - '0';
+	}
+	return ans;
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+while(1)
 {
-	cin>>a;
-	coin.pb(a);
+string a,b;
+cin>>a>>b;
+if(a!= "-1" and b!="-1"){
+ll ans = 0;
+memset(dp,-1,sizeof(dp));
+fi(i,0,a.length(),1)
+ar[i+1] = a[i] - '0'; 
+memset(dp,-1,sizeof(dp));
+fi(i,0,b.length(),1)
+ar[i+1] = b[i] - '0';
+ans = getans(1,0,b.length(),false) - getans(1,0,a.length(),false) + getans(a);
+cout<<ans<<"\n";	
+}	
+else
+return 0 ;
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
 return 0;
 }
 

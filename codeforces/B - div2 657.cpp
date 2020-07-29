@@ -59,42 +59,36 @@ void dfs(ll v)
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	cin>>a;
-	coin.pb(a);
+	ll l ,r, m;
+	cin>>l>>r>>m;
+	ll a,b,c;
+	bool f = false;
+	fie(i,l,r,1)
+	{
+		if(m % i == 0)
+		{
+			f = 1;
+			a = i;
+		}
+	}
+	if(m < l)
+	{
+		cout<<l<<" "<<r - m%l<<" "<<r<<"\n";
+	}
+	else
+	{
+		cout<< l <<" "<< r <<" "<<r - m%l <<"\n";
+	}
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
 return 0;
 }
 

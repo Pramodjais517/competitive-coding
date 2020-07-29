@@ -59,42 +59,41 @@ void dfs(ll v)
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	cin>>a;
-	coin.pb(a);
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	string s[n+1];
+	while(s[0].length() < a[0])
+	s[0].pb('a');
+	for(int i=1;i<n;i++)
+	{
+		while(s[i].length() < a[i])
+		s[i].pb('a');
+		if(a[i-1] > a[i])
+		while(s[i-1].length() < a[i -1])
+		{
+				s[i-1].pb('a');
+		}
+	}
+	while(s[n].length() < a[n-1])
+	s[n].pb('a');
+	fi(i,0,n+1,1)
+	{
+		cout<<s[i]<<"\n";
+	}
+	cout<<"\n";
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
 return 0;
 }
 

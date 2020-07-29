@@ -17,9 +17,6 @@ using namespace std;
 
 ll N = 1000000;
 vector<bool> prime(N+1,true);
-ll vis[10001];
-ll dis[10001];
-vector<ll> node[10001];
 
 void sieve()
 {
@@ -45,56 +42,27 @@ ll pow(ll a, ll b)
 	return r*a*r;
 	return r*r;
 }
-
-void dfs(ll v)
-{
-	vis[v] = 1;
-	//dis[v] = d;
-	for(auto child:node[v])
-	{
-		if(vis[child] == 0)
-		{
-			dfs(child);
-		}
-	}
-}
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
+
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
-{
-	cin>>a;
-	coin.pb(a);
-}
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
+vector<vector<it>> a[10];
+memset(a,-1,sizeof(a));
+a[0].pb(1);
+a[0].pb(2);
+a[1].pb(3);
+a[2].pb(4);
+fi(i,0,10,1)
+fi(j,0,a[i].size(),1)
+cout<<a[i][j]<<" ";
 return 0;
 }
 

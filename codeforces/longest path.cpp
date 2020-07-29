@@ -45,56 +45,42 @@ ll pow(ll a, ll b)
 	return r*a*r;
 	return r*r;
 }
-
-void dfs(ll v)
+ll maxD,maxN;
+void dfs(ll v, ll dis)
 {
 	vis[v] = 1;
-	//dis[v] = d;
+	if(dis > maxD)
+	maxD = dis,maxN = v;
 	for(auto child:node[v])
 	{
 		if(vis[child] == 0)
 		{
-			dfs(child);
+			dfs(child,dis+1);
 		}
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+ll n;
+cin>>n;
+ll m = n - 1;
+ll a,b;
+fi(i,0,m,1)
 {
-	cin>>a;
-	coin.pb(a);
+	cin>>a>>b;
+	node[a].pb(b);
+	node[b].pb(a);
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
+maxD = -1;
+dfs(1,0);
+maxD = -1;
+memset(vis,0,sizeof(vis));
+dfs(maxN,0);
+cout<<maxD<<"\n";
 return 0;
 }
 

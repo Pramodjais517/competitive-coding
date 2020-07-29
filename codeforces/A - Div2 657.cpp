@@ -59,42 +59,51 @@ void dfs(ll v)
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	cin>>a;
-	coin.pb(a);
+	ll n;
+	string s;
+	cin>>n>>s;
+	string cmp = "abacabc";
+	ll cnt = 0;
+	fi(i,0,n - 7,1)
+	{
+		string st = s.substr(i,i+7);
+		if(st == "abacaba")
+		{
+			cnt++;
+		}
+	}
+	if(cnt > 1)
+	{
+		cout<<"No\n";
+		continue;
+	}
+	bool f = 0;
+	fi(i,0,n - 7,1)
+	{
+		fi(j,0,7,1)
+		{
+			if(s[i+j] != cmp[i] and s[i + j] != '?' and f == 0)
+			{
+				s[i+j] = cmp[i];
+				f = 1;
+			}
+			else if(s[i + j] == '?')
+			{
+				s[i+j] = 'd';
+			}
+		}
+	}
+	cout<<s<<"\n";
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
 return 0;
 }
 

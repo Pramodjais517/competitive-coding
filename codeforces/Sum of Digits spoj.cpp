@@ -43,33 +43,32 @@ ll pow(ll a, ll b)
 	return r*r;
 }
 // template ends here
-
+ll getans(ll n)
+{
+	ll lim = pow(10,n) - 1;
+	cout<<lim<<"\n";
+	ll ans = 0 ;
+	for(int i=1;i<=lim;i++)
+	{
+		ll tmp = i;
+		while(tmp>0)
+		{
+			ans += tmp%10;
+			tmp /= 10;
+		}
+	}
+	return ans;
+}
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll a,b;
-ll ans = 0;
-while(1)
-{
-	cin>>a>>b;
-	if(a >= 0 and b >= 0)
-	{
-		for(int i=a;i<=b;i++)
-		{
-			ll tmp = i;
-			while(tmp>0)
-			{
-				ans += tmp%10;
-				tmp /= 10;
-			}
-		}
-		cout<<ans<<"\n";
-	}
-	else
-	break;
-}
+ll n;
+cin>>n;
+ll ans = getans(n);
+cout<<ans<<"\n";
+
 return 0;
 }
 

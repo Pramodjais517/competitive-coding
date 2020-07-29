@@ -59,42 +59,42 @@ void dfs(ll v)
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
-
+queue<ll> q; 
+void bfs(int v)
+{
+	cout<<v<<" ";
+	vis[v]=1;
+	for(auto child:node[v])
+	{
+		q.push(child);
+	}
+	q.pop();
+	if(vis[q.front()] == 0)
+	bfs(q.front());
+	if(q.empty())
+	return;
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+int n,m;
+cin>>n>>m;
+ll a ,b;
+fi(i,0,m,1)
 {
-	cin>>a;
-	coin.pb(a);
+	cin>>a>>b;
+	node[a].pb(b);
+	node[b].pb(a);
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
+memset(vis,0,sizeof(vis));
+fie(i,1,n,1)
+{
+	if(vis[i]==0)
+	{
+		bfs(i);
+	}
+}
 return 0;
 }
 

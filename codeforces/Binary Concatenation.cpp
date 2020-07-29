@@ -59,42 +59,48 @@ void dfs(ll v)
 	}
 }
 // template ends here
-class Solution {
-public: int coinChange(vector<ll>& coin, ll sum) {
-    int n = sum+1;
-    int dp[n];
-    sort(coin.begin(),coin.end());
-    fi(i,0,coin.size(),1)
-    for(ll i=1;i<=sum;i++)
-        dp[i] = 0;
-    dp[0] = 0;
-    for(ll i=1;i<=sum;i++)
-    {
-        for(ll j=0;j<coin.size();j++)
-        {
-            if(coin[j]<=i)
-            dp[i] = dp[i]+dp[i-coin[j]] + 1;
-        }
-    }
-    return dp[sum] > sum ? -1 : dp[sum];
-    }
-};
-
+string inttobin(ll a)
+{
+	string s = "";
+	while(a>0)
+	{
+		if((a&1) == 0)
+		s.pb('0');
+		else
+		s.pb('1');
+		a = a>>1;
+	}
+	reverse(s.begin(),s.end());
+	return s;
+}
+ll bintoint(string s)
+{
+	ll ans = 0;
+	fi(i,0,s.length(),1)
+	{
+		if(s[i] == '1')
+		ans += pow(2,i);
+	}
+	return ans;
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,sum;
-cin>>sum>>n;
-vector<ll> coin;
-ll a;
-fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
 {
-	cin>>a;
-	coin.pb(a);
+	cout<<inttobin(10)<<"\n";
+	cout<<bintoint("1010")<<"\n";
+//	ll n;
+//	cin>>n;
+//	ll a[n];
+//	fi(i,0,n,1)
+//	{
+//		cin>>a[i];
+//	}
 }
-Solution s;
-cout<<s.coinChange(coin,sum)<<'\n';
 return 0;
 }
 
