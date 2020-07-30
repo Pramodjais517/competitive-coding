@@ -54,7 +54,7 @@
 		{
 			if(vis[child] == 0)
 			dfs(child,d+1);
-			else
+			else 
 			dis[child] = min(dis[child],d+1);
 		}
 	}
