@@ -17,9 +17,9 @@ using namespace std;
 
 ll N = 1000000;
 vector<bool> prime(N+1,true);
-ll vis[10001];
-ll dis[10001];
-vector<ll> node[10001];
+ll vis[100001];
+ll dis[100001];
+vector<ll> node[100001];
 
 void sieve()
 {
@@ -46,37 +46,15 @@ ll pow(ll a, ll b)
 	return r*r;
 }
 
-void dfs(ll v)
+void dfs(ll v,ll d)
 {
+	dis[v] = min(d,dis[v]);
+	if(vis[v]==1)
+	return;
 	vis[v] = 1;
-	//dis[v] = d;
 	for(auto child:node[v])
 	{
-		if(vis[child] == 0)
-		{
-			dfs(child);
-		}
-	}
-}
-void bfs(ll v)
-{
-	queue<ll> q;
-	q.push(v);
-	vis[v] = 1;
-	dis[v] = 0;
-	while(!q.empty())
-	{
-		for(auto child:node[q.front()])
-		{
-			if(vis[child] == 0)
-			{
-			q.push(child);
-			dis[child] = dis[q.front()] + 1;
-			vis[child] = 1;
-			}
-		}
-		q.pop();
-	
+		dfs(child,d+1);
 	}
 }
 // template ends here
@@ -91,16 +69,16 @@ while(t--)
 {
 ll n,m;
 cin>>n>>m;
-fie(i,0,n,1)
-vis[i] = 0,dis[i] = 0;
 ll a,b;
+fie(i,0,n,1)
+node[i].clear(),vis[i]=0,dis[i] = LONG_MAX;
 while(m--)
 {
 	cin>>a>>b;
 	node[a].pb(b);
 	node[b].pb(a);
 }
-bfs(1);
+dfs(1,0);
 cout<<dis[n]<<"\n";
 }
 return 0;

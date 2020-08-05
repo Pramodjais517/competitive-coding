@@ -58,27 +58,6 @@ void dfs(ll v)
 		}
 	}
 }
-void bfs(ll v)
-{
-	queue<ll> q;
-	q.push(v);
-	vis[v] = 1;
-	dis[v] = 0;
-	while(!q.empty())
-	{
-		for(auto child:node[q.front()])
-		{
-			if(vis[child] == 0)
-			{
-			q.push(child);
-			dis[child] = dis[q.front()] + 1;
-			vis[child] = 1;
-			}
-		}
-		q.pop();
-	
-	}
-}
 // template ends here
 
 int main()
@@ -89,19 +68,29 @@ ll t;
 cin>>t;
 while(t--)
 {
-ll n,m;
-cin>>n>>m;
-fie(i,0,n,1)
-vis[i] = 0,dis[i] = 0;
-ll a,b;
-while(m--)
-{
-	cin>>a>>b;
-	node[a].pb(b);
-	node[b].pb(a);
-}
-bfs(1);
-cout<<dis[n]<<"\n";
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	bool f = 0;
+	fi(i,0,n-1,1)
+	{
+		fi(j,i+1,n,1)
+		{
+			if(abs(a[i]-a[j]) > 1)
+			{
+				f = 1;
+				break;
+			}
+		}
+		if(f)
+		break;
+	}
+	if(f)
+	cout<<"NO\n";
+	else
+	cout<<"YES\n";
 }
 return 0;
 }

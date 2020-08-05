@@ -58,27 +58,6 @@ void dfs(ll v)
 		}
 	}
 }
-void bfs(ll v)
-{
-	queue<ll> q;
-	q.push(v);
-	vis[v] = 1;
-	dis[v] = 0;
-	while(!q.empty())
-	{
-		for(auto child:node[q.front()])
-		{
-			if(vis[child] == 0)
-			{
-			q.push(child);
-			dis[child] = dis[q.front()] + 1;
-			vis[child] = 1;
-			}
-		}
-		q.pop();
-	
-	}
-}
 // template ends here
 
 int main()
@@ -89,19 +68,35 @@ ll t;
 cin>>t;
 while(t--)
 {
-ll n,m;
-cin>>n>>m;
-fie(i,0,n,1)
-vis[i] = 0,dis[i] = 0;
-ll a,b;
-while(m--)
-{
-	cin>>a>>b;
-	node[a].pb(b);
-	node[b].pb(a);
-}
-bfs(1);
-cout<<dis[n]<<"\n";
+	ll n;
+	cin>>n;
+	ll o[n],c[n];
+	fi(i,0,n,1)
+	cin>>o[i];
+	fi(i,0,n,1)
+	cin>>c[i];
+	ll to[n],tc[n];
+	fi(i,0,n,1)
+	{
+		to[i] = o[i];
+		tc[i] = c[i];
+	}
+	
+	sort(to,to+n);
+	sort(tc,tc+n);
+	ll min_or = to[0];
+	ll min_cn = tc[0];
+	ll ans =0;
+	fi(i,0,n,1)
+	{
+		ll dor = abs(o[i] - min_or);
+		ll dcn = abs(c[i] - min_cn);
+//		if(o[i] > min_or and c[i] > min_cn)
+		ans += max(dor,dcn);
+//		else
+//		ans += dor + dcn;
+	}
+	cout<<ans<<"\n";
 }
 return 0;
 }

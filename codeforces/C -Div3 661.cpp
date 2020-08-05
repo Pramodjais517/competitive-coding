@@ -58,27 +58,6 @@ void dfs(ll v)
 		}
 	}
 }
-void bfs(ll v)
-{
-	queue<ll> q;
-	q.push(v);
-	vis[v] = 1;
-	dis[v] = 0;
-	while(!q.empty())
-	{
-		for(auto child:node[q.front()])
-		{
-			if(vis[child] == 0)
-			{
-			q.push(child);
-			dis[child] = dis[q.front()] + 1;
-			vis[child] = 1;
-			}
-		}
-		q.pop();
-	
-	}
-}
 // template ends here
 
 int main()
@@ -89,19 +68,36 @@ ll t;
 cin>>t;
 while(t--)
 {
-ll n,m;
-cin>>n>>m;
-fie(i,0,n,1)
-vis[i] = 0,dis[i] = 0;
-ll a,b;
-while(m--)
-{
-	cin>>a>>b;
-	node[a].pb(b);
-	node[b].pb(a);
-}
-bfs(1);
-cout<<dis[n]<<"\n";
+	ll n; cin>>n; 
+    ll a[n]; 
+    set<ll> s;
+    fi(i,0,n,1) cin>>a[i],s.insert(a[i]);
+    if(n==1){
+	cout<<0<<"\n";
+	continue;
+	}
+    else if(n==2 or n==3){
+	cout<<1<<"\n";
+	 continue;
+	 }
+	else if(s.size()==1)
+        cout<<n/2<<"\n";
+    else{
+        ll ans=0;
+        fie(i,1,2*n,1){
+            ll arr[n];
+            memset(arr,0,sizeof(arr));
+            ll cnt=0;
+            fi(j,0,n,1){
+                fi(k,j+1,n,1){
+                    if(a[j]+a[k]==i and arr[k]!=1 and arr[j]!=1)
+                        cnt++,arr[k]=1,arr[j]=1;
+                }
+            }
+            ans=max(ans,cnt);
+        }
+        cout<<ans<<"\n";
+        }
 }
 return 0;
 }
