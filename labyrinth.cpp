@@ -85,6 +85,9 @@ fi(i,0,n,1)
 	fi(j,0,m,1)
 	{
 		cin>>s[i][j];
+		vis[i][j] = 0;
+		dis[i][j] = 0;
+		path[{i,j}] = "";
 		if(s[i][j] == 'A')
 		{
 			sti = i;
@@ -95,14 +98,6 @@ fi(i,0,n,1)
 			eni = i;
 			enj = j;
 		}
-	}
-}
-ll cnt = 0;
-fi(i,0,n,1)
-{
-	fi(j,0,m,1)
-	{
-		vis[i][j] = 0;
 	}
 }
 bfs(sti,stj);
