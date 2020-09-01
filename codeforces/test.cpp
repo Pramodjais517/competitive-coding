@@ -1,73 +1,50 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>  
 using namespace std;
-// template starts here
 #define ll long long
-#define ull unsigned long long
-#define rs reserve
 #define pb push_back
-#define ff first
-#define ss second
 #define mp make_pair
-#define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
-#define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
-#define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
-#define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
-#define mod 1000000007
+#define pl pair<ll,ll>
+#define vl vector<ll>
 
-ll N = 1000000;
-vector<bool> prime(N+1,true);
-
-void sieve()
+void fastio()
 {
-	prime[0] = false,prime[1] = false;
-	for(ll i=2;i*i <= N;i++)
-	{
-		if(prime[i])
-		{
-			for(ll j = i*i; j<= N ;j+=i)
-			prime[j] = false;
-		}
-	}
+	ios_base::sync_with_stdio(false);cin.tie(NULL);
+	cout<<fixed<<setprecision(10);
 }
-
-ll pow(ll a, ll b)
-{
-	if(b==0)
-	return 1;
-	if(b==1)
-	return a;
-	ll r = pow(a,b/2);
-	if(b&1)
-	return r*a*r;
-	return r*r;
-}
-// template ends here
-
 
 int main()
 {
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
-{
-	ll a,b,n,m;
-	cin>>a>>b>>n>>m;
-	if((n+m) > (a+b))
+	fastio(); 
+	ll n;
+	cin>>n;
+	ll a[n];
+	for(ll i = 0; i < n; i++)
 	{
-		cout<<"No\n";
+		cin>>a[i];
 	}
-	else
+	ll ans = 0;
+	sort(a, a + n);
+	for(ll i = 0; i < n; i++)
 	{
-		ll x  = min(a,b);
-		if(m>x)
-		cout<<"No\n";
-		else
-		cout<<"Yes\n";
+		ans += (a[i] - 1);
 	}
+	ll mx = 1e7;
+	for(ll i = 2; i <= mx; i++)
+	{
+		ll cmp = 1, temp = 0, x = 0;
+		for(ll j = 0; j < n; j++)
+		{
+			temp += abs(a[j] - cmp);
+			if(temp > ans)
+			{
+				x = 1;
+				break;
+			}
+			cmp *= i;
+		}
+		if(!x) ans = temp;
+		else break;
+	}
+	cout<<ans;
+	return 0;
 }
-return 0;
-}
-

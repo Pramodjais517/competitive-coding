@@ -68,77 +68,40 @@ ll t;
 cin>>t;
 while(t--)
 {
-	ll n,m;
-	cin>>n>>m;
-	ll init[n];
+	ll n;
+	cin>>n;
+	map<char,ll> m;
+	string s;
 	fi(i,0,n,1)
 	{
-		cin>>init[i];
+		cin>>s;
+		for(auto i:s)
+		{
+			m[i]++;
+		}
 	}
-	ll rate[n][m];
-	ll rank[n][m];
-	memset(rank,0,sizeof(rank));
-	memset(rate,0,sizeof(rate));
-	ll dr = 0;
-	fi(i,0,n,1)
+	bool f =0;
+	for(auto i: m)
 	{
-		ll curr_rate = init[i];
-		fi(j,0,m,1)
+		if(i.second % n == 0)
 		{
-			cin>>dr;
-			rate[i][j] = curr_rate + dr;
-			curr_rate = rate[i][j];
+			continue;
+		}
+		else
+		{
+			f = 1;
+			break;
 		}
 	}
-	fi(i,0,m,1)
+	if(f)
 	{
-		map<ll,ll> mp;
-		fi(j,0,n,1)
-		{
-			mp[rate[j][i]]++;
-		}
-		map<ll, ll> rmp;
-		ll in = 1;
-		for (auto r = mp.rbegin(); r != mp.rend(); ++r)
-		{
-		rmp[r->first] = in;
-		in += r->second;
-		}
-		in = 1;
-		fi(j,0,n,1)
-		{
-			rank[j][i] = rmp[rate[j][i]];
-		}
+		cout<<"No\n";
 	}
-	ll ans =0;
-	ll hrate = 0;
-	ll hratemonth = 0;
-	ll hrank = LONG_MAX;
-	ll hrankmonth = 0;
-	fi(i,0,n,1)
+	else
 	{
-		hrate = 0;
-		hratemonth = 0;
-		hrank = LONG_MAX;
-		hrankmonth = 0;
-		fi(j,0,m,1)
-		{
-			if(rate[i][j] > hrate)
-			{
-				hrate = rate[i][j];
-				hratemonth = j+1;
-			}
-			if(rank[i][j] < hrank )
-			{
-				hrank = rank[i][j];
-				hrankmonth = j + 1;
-			}
-		}
-		if(hrankmonth != hratemonth)
-		ans++;
+		cout<<"Yes\n";
 	}
-	cout<<ans<<'\n';
-} 	
+}
 return 0;
 }
 
