@@ -13,31 +13,50 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-class List
-{
-	public:
-	int item;
-	List* next;	
-};
-void insert(List** head, int item)
-{
-	List* node = new List();
-	node->item = item;
-	node->next = *head;
-	*head  = node;
 
+ll digsum(ll n)
+{
+	ll sum = 0;
+	while(n>0)
+	{
+		sum+=n%10;
+		n/=10;
+	}
+	return sum;
 }
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-List* head = NULL;
-insert(&head,5);
-insert(&head,7);
-while(head != NULL)
+ll t;
+cin>>t;
+while(t--)
 {
-	cout<<head->item<<" ";
-	head = head->next;
+	ll n,s;
+	cin>>n>>s;
+	ll ipow10[19];
+	ipow10[0] = 1;
+	fi(i,1,19,1)
+	ipow10[i] = ipow10[i-1] * 10;
+	ll i=0,ans = 0;
+	while(n>0)
+	{
+		if(digsum(n) <= s)
+		{
+			break;
+		}
+		ll x =0;
+		if(n%10 != 0)
+		{
+		    x = n%10;
+			ans += (ipow10[i] * (10 - x));	
+			n+=(10 - x);
+		}
+		n/=10;
+		i++;
+	}
+	cout<<ans<<"\n";
 }
 return 0;
 }

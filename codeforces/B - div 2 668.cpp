@@ -13,31 +13,30 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-class List
-{
-	public:
-	int item;
-	List* next;	
-};
-void insert(List** head, int item)
-{
-	List* node = new List();
-	node->item = item;
-	node->next = *head;
-	*head  = node;
 
-}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-List* head = NULL;
-insert(&head,5);
-insert(&head,7);
-while(head != NULL)
+ll t;
+cin>>t;
+while(t--)
 {
-	cout<<head->item<<" ";
-	head = head->next;
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	{
+		cin>>a[i];
+	}
+	ll ans = 0;
+	fi(i,0,n,1)
+	{
+		ans+=a[i];
+		if(ans<0)
+		ans = 0;
+	}
+	cout<<ans<<"\n";
 }
 return 0;
 }
