@@ -14,42 +14,19 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-vector<ll> graph[10001];
-bool vis[10001];
-
-void dfs(ll v)
-{
-	vis[v] = 1;
-	for(auto child:graph[v])
-	{
-		if(vis[child] == 0)
-		dfs(child);
-	}
-}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,m;
-cin>>n>>m;
-memset(vis,0,sizeof(vis));
-ll a,b;
-fi(i,0,m,1)
+string s;
+cin>>s;
+ll l = 0,r = s.length() -1;
+while(l<=r)
 {
-	cin>>a>>b;
-	graph[a].pb(b);
-	graph[b].pb(a);
+	swap(s[l],s[r]);
+	l++,r--;
 }
-ll cc=0;
-fi(i,1,n+1,1)
-{
-	if(vis[i]==0)
-	{
-		dfs(i);	
-		cc++;
-	}
-}
-cout<<cc<<" ";
+cout<<s<<"\n";
 return 0;
 }
 

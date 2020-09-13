@@ -14,42 +14,56 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-vector<ll> graph[10001];
-bool vis[10001];
-
-void dfs(ll v)
-{
-	vis[v] = 1;
-	for(auto child:graph[v])
-	{
-		if(vis[child] == 0)
-		dfs(child);
-	}
-}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll n,m;
-cin>>n>>m;
-memset(vis,0,sizeof(vis));
-ll a,b;
-fi(i,0,m,1)
+ll n;
+cin>>n;
+string s;
+cin>>s;
+ll i=0,A=0,B = 0,cnt=0;
+bool fb = 0;
+while(i<n)
 {
-	cin>>a>>b;
-	graph[a].pb(b);
-	graph[b].pb(a);
-}
-ll cc=0;
-fi(i,1,n+1,1)
-{
-	if(vis[i]==0)
+	while(s[i] == '-' and i<n)
 	{
-		dfs(i);	
-		cc++;
+		cnt++,i++;
 	}
+	if(i>=n)
+	{
+		break;
+	}
+	if(s[i]=='A' and fb==0)
+	{
+		A+=cnt+1,cnt=0;
+	}
+	else if(s[i]=='A' and fb==1)
+	{
+		A+=(cnt/2) + 1;
+		B+=cnt/2;
+		fb=0,cnt=0;
+	}
+	else if(s[i]=='B' and fb==0)
+	{
+		B+=1;cnt=0,fb=1;
+	}
+	else
+	{
+		B+=(cnt+1);
+		cnt = 0,fb=1;
+	}
+	i++;
 }
-cout<<cc<<" ";
+if(fb)
+B+=cnt;
+cout<<A<<" "<<B<<"\n";
+if(A>B)
+cout<<"A\n";
+else if(A < B)
+cout<<"B\n";
+else
+cout<<"Coalition government\n";
 return 0;
 }
 

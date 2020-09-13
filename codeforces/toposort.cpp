@@ -13,18 +13,33 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-
-vector<ll> graph[10001];
+vector<ll> node[10001];
 bool vis[10001];
+ll in[10001];
 
-void dfs(ll v)
+void toposort(int n)
 {
-	vis[v] = 1;
-	for(auto child:graph[v])
+	queue<ll> q;
+	vector<ll> ans;
+	fi(i,1,n+1,1)
 	{
-		if(vis[child] == 0)
-		dfs(child);
+		if(in[i] == 0)
+		q.push(i);
 	}
+	while(!q.empty())
+	{
+		ll curr = q.front();
+		ans.pb(curr);
+		q.pop();
+		for(auto child:node[curr])
+		{
+			in[child]--;
+			if(in[child]==0)
+			q.push(child);	
+		}		
+	}
+	for(auto i: ans)
+	cout<<i<<" ";
 }
 int main()
 {
@@ -32,24 +47,14 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 ll n,m;
 cin>>n>>m;
-memset(vis,0,sizeof(vis));
-ll a,b;
 fi(i,0,m,1)
 {
+	ll a,b;
 	cin>>a>>b;
-	graph[a].pb(b);
-	graph[b].pb(a);
+	node[a].pb(b);
+	in[b]++;
 }
-ll cc=0;
-fi(i,1,n+1,1)
-{
-	if(vis[i]==0)
-	{
-		dfs(i);	
-		cc++;
-	}
-}
-cout<<cc<<" ";
+toposort(n);
 return 0;
 }
 

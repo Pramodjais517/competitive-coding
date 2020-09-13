@@ -14,43 +14,24 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-vector<ll> graph[10001];
-bool vis[10001];
 
-void dfs(ll v)
+int getNthFromLast(Node *head, int n)
 {
-	vis[v] = 1;
-	for(auto child:graph[v])
-	{
-		if(vis[child] == 0)
-		dfs(child);
-	}
+       // Your code here
+       Node* fast = head;
+       Node* slow = head;
+       while(n>0 and fast!=NULL)
+       {
+           fast = fast->next;
+           n--;
+       }
+       if(n>0)
+       return -1;
+       while(slow and fast!=NULL)
+       {
+           slow = slow->next;
+           fast = fast->next;
+       }
+       return slow->data;
 }
-int main()
-{
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-ll n,m;
-cin>>n>>m;
-memset(vis,0,sizeof(vis));
-ll a,b;
-fi(i,0,m,1)
-{
-	cin>>a>>b;
-	graph[a].pb(b);
-	graph[b].pb(a);
-}
-ll cc=0;
-fi(i,1,n+1,1)
-{
-	if(vis[i]==0)
-	{
-		dfs(i);	
-		cc++;
-	}
-}
-cout<<cc<<" ";
-return 0;
-}
-
 
