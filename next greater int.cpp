@@ -1,4 +1,4 @@
-	#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long
 #define ull unsigned long long
@@ -13,24 +13,13 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-bool check(string s,ll l,ll r)
-{
-	ll mid = l + (r-l)/2 + 1;
-	ll lim = mid;
-	while(l < lim)
-	{
-		if(s[l]!=s[mid])
-		{
-			return false;
-		}
-		else
-		{
-		l++;
-		mid++;	
-		}
-	}
-	return true;
+
+void reverse(string& s, int l, int r) 
+{ 
+    while (l < r) 
+        swap(s[l++], s[r--]); 
 }
+
 int main()
 {
 ios_base::sync_with_stdio(false);
@@ -41,25 +30,37 @@ while(t--)
 {
 	string s;
 	cin>>s;
-	ll l = 0,r = s.length()-1;
-	ll ans = 0;
-	while(l<=r and l<s.length() and r>=0)
+	int n = s.length();bool f = 0;
+	string temp = s;
+	for(int i=n-1;i>=0;i--)
 	{
-		if((r-l + 1) & 1)
+		f = 0;
+		for(int j = i-1;j>=0;j--)
 		{
-			r--;
+			if(temp[j] < temp[i])
+			{
+				ll min_index = 0;
+				ll min_diff = 0;
+				for(int k = j+1;k<n;k++)
+				{
+					if(temp[k] - temp[j]  > min_diff)
+					{
+						min_index = k;
+					}
+				}
+				swap(temp[min_index],temp[j]);
+				reverse(temp,j+1,n-1);
+				f = 1;
+				break;
+			}
 		}
-		else if(!check(s,l,r))
-		{
-			r--;
-		}
-		else
-		{
-			l += (r-l)/2 + 1;
-		}
-		ans++;
+		if(f)
+		break;
 	}
-	cout<<ans<<"\n";
+	if(f)
+	cout<<temp<<"\n";
+	else
+	cout<<"no answer\n";
 }
 return 0;
 }

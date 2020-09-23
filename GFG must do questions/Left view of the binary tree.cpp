@@ -37,61 +37,34 @@ Node* build_tree()
 	node->right = build_tree();
 	return node;
 }
-
-bool tracepath(Node* root, vector<Node*> &path,int k)
+void print(Node* root)
 {
-	if(root==NULL)
-	return false;
-	if(root->data == k)
-	{
-		path.push_back(root);
-		return true;	
-	}
-	
-	if(tracepath(root->left,path, k))
-	{
-	path.push_back(root);
-	return true;
-	}
-	else
-	{
-		if(tracepath(root->right,path, k))
-		{
-		path.push_back(root);
-		return true;
-		}
-	}
-	return false;
+	if(root == NULL)
+	return;
+	cout<<root->data<<" ";
+	print(root->left);
+	print(root->right);
 }
-
-
-Node* LCA(Node *root, int n1, int n2)
+void printLeft(Node* root,int level, int &max_level)
 {
-   //Your code here
-   vector<Node*> path1,path2;
-   tracepath(root,path1,n1);
-   tracepath(root,path2,n2);
-   int i = path1.size()-1;
-   int j = path2.size()-1;
-   Node* LCA_point = root;
-   while(i>=0 and j>=0 and path1[i]->data == path2[j]->data)
-   {
-       LCA_point = path1[i];
-       i--,j--;
-   }
-  return LCA_point;
+	if(root == NULL)
+	return;
+	if(level > max_level)
+	{
+		max_level = level;
+		cout<<root->data<<" ";
+	}
+	printLeft(root->left,level + 1, max_level);
+	printLeft(root->right,level+1, max_level);	
 }
-
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 Node* root = build_tree();
-int n1,n2;
-cin>>n1>>n2;
-Node* point = LCA(root,n1,n2);
-cout<<point->data;
+int max_level = -1;
+printLeft(root, 0 , max_level);
 return 0;
 }
 

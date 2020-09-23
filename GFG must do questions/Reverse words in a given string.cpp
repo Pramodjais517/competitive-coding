@@ -1,4 +1,4 @@
-	#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long
 #define ull unsigned long long
@@ -13,24 +13,7 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-bool check(string s,ll l,ll r)
-{
-	ll mid = l + (r-l)/2 + 1;
-	ll lim = mid;
-	while(l < lim)
-	{
-		if(s[l]!=s[mid])
-		{
-			return false;
-		}
-		else
-		{
-		l++;
-		mid++;	
-		}
-	}
-	return true;
-}
+
 int main()
 {
 ios_base::sync_with_stdio(false);
@@ -39,27 +22,25 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string s;
-	cin>>s;
-	ll l = 0,r = s.length()-1;
-	ll ans = 0;
-	while(l<=r and l<s.length() and r>=0)
+	vector<string> s;
+	string str;
+	cin>>str;
+	string x = "";
+	fi(i,0,str.length(),1)
 	{
-		if((r-l + 1) & 1)
-		{
-			r--;
-		}
-		else if(!check(s,l,r))
-		{
-			r--;
-		}
+		if(str[i] == '.')
+		s.pb(x),x = "";
 		else
-		{
-			l += (r-l)/2 + 1;
-		}
-		ans++;
+		x.pb(str[i]);
 	}
-	cout<<ans<<"\n";
+	s.pb(x),x = "";
+	fi(i,0,s.size(),1)
+	{
+		if(i==s.size()-1)
+		cout<<s[s.size() - i -1]<<"\n";
+		else
+		cout<<s[s.size() - i - 1]<<".";
+	}
 }
 return 0;
 }

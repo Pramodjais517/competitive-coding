@@ -1,4 +1,4 @@
-	#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long
 #define ull unsigned long long
@@ -13,54 +13,28 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-bool check(string s,ll l,ll r)
+ll sqroot(ll n)
 {
-	ll mid = l + (r-l)/2 + 1;
-	ll lim = mid;
-	while(l < lim)
+	int i=1;
+	while(i*i <= n)
 	{
-		if(s[l]!=s[mid])
-		{
-			return false;
-		}
-		else
-		{
-		l++;
-		mid++;	
-		}
+		i++;
 	}
-	return true;
+	return i-1;
+	
 }
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+ll n;
+cin>>n;
+ll x = sqroot(n);
+if(x*x == n)
 {
-	string s;
-	cin>>s;
-	ll l = 0,r = s.length()-1;
-	ll ans = 0;
-	while(l<=r and l<s.length() and r>=0)
-	{
-		if((r-l + 1) & 1)
-		{
-			r--;
-		}
-		else if(!check(s,l,r))
-		{
-			r--;
-		}
-		else
-		{
-			l += (r-l)/2 + 1;
-		}
-		ans++;
-	}
-	cout<<ans<<"\n";
+	x-=1;
 }
+cout<<x;
 return 0;
 }
 

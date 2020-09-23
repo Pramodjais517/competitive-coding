@@ -1,4 +1,4 @@
-	#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long
 #define ull unsigned long long
@@ -13,24 +13,7 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
-bool check(string s,ll l,ll r)
-{
-	ll mid = l + (r-l)/2 + 1;
-	ll lim = mid;
-	while(l < lim)
-	{
-		if(s[l]!=s[mid])
-		{
-			return false;
-		}
-		else
-		{
-		l++;
-		mid++;	
-		}
-	}
-	return true;
-}
+
 int main()
 {
 ios_base::sync_with_stdio(false);
@@ -39,27 +22,34 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string s;
-	cin>>s;
-	ll l = 0,r = s.length()-1;
-	ll ans = 0;
-	while(l<=r and l<s.length() and r>=0)
+	ll n;
+	cin>>n;
+	ll a[n];
+	fi(i,0,n,1)
+	cin>>a[i];
+	sort(a,a+n);
+	ll i=0;bool f = 0;ll j=1,k=0;
+	while(i<n)
 	{
-		if((r-l + 1) & 1)
+		k = 1;
+		if(a[i] > 0)
 		{
-			r--;
+			if(a[i]!=j)
+			{
+				cout<<j<<"\n";
+				f = 1;
+				break;
+			}
+			k = 1;
+			while(i<n and a[i]==a[i+k])
+			k++;
+			j++;
 		}
-		else if(!check(s,l,r))
-		{
-			r--;
-		}
-		else
-		{
-			l += (r-l)/2 + 1;
-		}
-		ans++;
+		i = i+k;
 	}
-	cout<<ans<<"\n";
+	if(!f)
+	cout<<j<<"\n"; 
+	
 }
 return 0;
 }
