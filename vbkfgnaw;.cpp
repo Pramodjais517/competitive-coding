@@ -15,14 +15,14 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-ll vis[10001][10001];
+ll vis[21][21];
 ll n,m;
-ll s[10001][10001];
-ll dis[10001][10001];
+ll s[21][21];
+ll dis[21][21];
 map<pair<ll,ll>,string> path;
 bool isvalid(ll x,ll y)
 {
-	if( (x < 0 or x >= n) or (y < 0 or y >= m))
+	if( (x < 0 or x > n) or (y < 0 or y > m))
 	return false;
 	if(vis[x][y])
 	return false;
@@ -51,18 +51,18 @@ void bfs(ll x, ll y)
 				dis[curx + a[i]][cury + b[i]] = dis[curx][cury] + 1;
 				if(i == 0)
 				{
-					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "U";	
+					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "L";	
 				} 
 				else if(i == 1)
 				{
-					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "R";	
+					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "U";	
 				}
 				else if(i == 2)
 				{
-					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "D";	
+					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "R";	
 				}
 				else{
-					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "L";	
+					path[{curx + a[i],cury + b[i]}] = path [{curx,cury}] + "D";	
 				}
 				q.push({curx + a[i],cury + b[i]});
 			}
