@@ -82,29 +82,68 @@ void print(Node* root)
 	}
 }
 
-bool search(Node* root, ll d)
+Node* deleteBST(Node* root, ll d)
 {
-	if(root==NULL)
-	return false;
-	
-	if(root->data == d)
-	return true;
-	
-	if(d <= root->data)
-	return search(root->left,d);
+	if(root == NULL)
+	return NULL;
+	if(d < root->data)
+	{
+		root->left = deleteBST(root->left,d);
+		return root;
+	}
+	else if(root->data == d)
+	{
+		//three cases can happen
+		//1)when the deleting node has no child
+		if(root->left == NULL and root->right == NULL)
+		{
+			delete root;
+			return NULL;
+		}
+		//2) when there is only one child of the deleting node i.e either left or right child
+		//2.1) if deleting node has a left child
+		if(root->right==NULL and root->left != NULL)
+		{
+			Node* temp = root->left;
+			delete root;
+			return temp;
+		}
+		//2.2) if deleting node has only right child
+		if(root->left==NULL and root->right!=NULL)
+		{
+			Node* temp = root->left;
+			delete root;
+			return temp;
+		}
+		// when left and right both child exits
+		else{
+			Node* replacement = root->right;
+			while(replacement->left != NULL)
+			{
+				replacement = replacement->left;
+			}
+			root->data = replacement->data;
+			root->right = deleteBST(root->right,root->data);
+			return root;
+			
+		}
+	}
 	else
-	return search(root->right,d);
+	{
+		root->right = deleteBST(root->right,d);
+		return root;
+	}
 }
-
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 Node* root = inputTree();
-print(root);
-ll d;
+ll d;	
 cin>>d;
-cout<<search(root,d);
+print(root);
+root = deleteBST(root,d);
+print(root);
 return 0;
 }
 
