@@ -23,8 +23,20 @@ cin.tie(NULL);
 //while(t--)
 //{
 //}
-string s = "pramod";
-cout<<s.substr(4,1);
+stack<int> s1,s2;
+s1.push(1);
+s1.push(2);
+s1.push(3);
+s2.push(4);
+s2.push(5);
+s2.push(6);
+swap(s1,s2);
+swap(s1,s2);
+while(!s1.empty())
+{
+	cout<<s1.top()<<" ";
+	s1.pop();
+}
 return 0;
 }
 

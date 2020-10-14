@@ -14,17 +14,31 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+class A{
+	public:
+		string name;
+		int Id;
+		A* node;
+	A(string s, int id)
+	{
+		name  = s;
+		Id = id;
+		node = NULL;
+	}
+	void print()
+	{
+		cout<<Id<<" "<<name;
+	}
+};
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-string s = "pramod";
-cout<<s.substr(4,1);
+A a("pramod", 1);
+a.print();
+A b = a;
+b.print();
 return 0;
 }
 

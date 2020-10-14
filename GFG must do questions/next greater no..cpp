@@ -18,13 +18,33 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-string s = "pramod";
-cout<<s.substr(4,1);
+ll t;
+cin>>t;
+while(t--)
+{
+	int n;
+	cin>>n;
+	int a[n];
+	stack<int> s;
+	for(int i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	int ans[n];
+	for(int i=0;i<n;i++)
+	{
+		s.push(i);
+	}
+    if(!s.empty())
+	{
+//		ans[s.top()] = -1;
+		cout<<s.top()<<" ";
+		s.pop();
+	}
+//	for(int i=0;i<n;i++)
+//	cout<<ans[i]<<" ";
+	cout<<"\n";
+}
 return 0;
 }
 

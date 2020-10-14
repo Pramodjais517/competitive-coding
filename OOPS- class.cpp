@@ -14,17 +14,31 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+class Car{
+	public:
+		string name;
+		string model;
+		string company;
+	void print()
+	{
+		cout<<company<<" ";
+		cout<<model<<" ";
+		cout<<sizeof(this);
+	}
+};
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-string s = "pramod";
-cout<<s.substr(4,1);
+Car c;
+c.company = "Ford";
+c.name = "Mustungzdvnksncjsacnaskjawoaicjxznkjcndskjbkjvbdsvvhsndsic sdckjnxcmnzkjcnjsc                           hnjzscnjskj";
+c.model = "2018";
+c.print();
+Car b;
+b.company = "tata";
+b.print();
 return 0;
 }
 

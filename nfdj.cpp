@@ -23,8 +23,9 @@ cin.tie(NULL);
 //while(t--)
 //{
 //}
-string s = "pramod";
-cout<<s.substr(4,1);
+int x = 0;
+x-=-1;
+cout<<x;
 return 0;
 }
 

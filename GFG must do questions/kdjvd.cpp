@@ -24,7 +24,7 @@ cin.tie(NULL);
 //{
 //}
 string s = "pramod";
-cout<<s.substr(4,1);
+cout<<s.substr(2,5);
 return 0;
 }
 

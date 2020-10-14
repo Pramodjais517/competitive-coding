@@ -18,13 +18,41 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-string s = "pramod";
-cout<<s.substr(4,1);
+ll t;
+cin>>t;
+while(t--)
+{
+	string s;
+	cin>>s;
+	stack<char> st;
+	set<char> open,close;
+	open = {'{','[','(' };
+	close = { '}', ']', ')'};
+	bool f = 0;
+	for(auto i:s)
+	{
+		if(close.find(i) != close.end())
+		{
+			if(i == ')' and st.top()!='(')
+			f = 1;
+			if(i == '}' and st.top()!='{')
+			f = 1;
+			if(i==']' and st.top() != '[')
+			f = 1;
+			if(f == 1)
+			break;
+			st.pop();
+		}
+		else
+		{
+			st.push(i);
+		}
+	}
+	if(st.empty() and !f)
+	cout<<"balanced\n";
+	else
+	cout<<"not balanced\n";
+}
 return 0;
 }
 

@@ -82,29 +82,62 @@ void print(Node* root)
 	}
 }
 
-bool search(Node* root, ll d)
+vector<int> findSpiral(Node *root)
 {
-	if(root==NULL)
-	return false;
-	
-	if(root->data == d)
-	return true;
-	
-	if(d <= root->data)
-	return search(root->left,d);
-	else
-	return search(root->right,d);
+    vector<int> ans;
+    stack<Node*> s1,s2;
+    s1.push(root);
+    ans.push_back(root->data);
+    bool flag = true;
+    while(!s1.empty())
+    {
+            Node* curr = s1.top();
+            s1.pop();
+            if(flag)
+            {
+                if(curr->left != NULL)
+                {
+                    s2.push(curr->left);
+                    ans.push_back(curr->left->data);
+                }
+                if(curr->right != NULL)
+                {
+                    s2.push(curr->right);
+                    ans.push_back(curr->right->data);
+                }
+            }
+            else
+            {
+                if(curr->right != NULL)
+                {
+                    s2.push(curr->right);
+                    ans.push_back(curr->right->data);
+                }
+                if(curr->left != NULL)
+                {
+                    s2.push(curr->left);
+                    ans.push_back(curr->left->data);
+                }
+            }
+            if(s1.empty())
+            {
+             swap(s1,s2);
+             flag = !flag;   
+            }
+    }
+    return ans;
 }
+
+
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 Node* root = inputTree();
-print(root);
-ll d;
-cin>>d;
-cout<<search(root,d);
+vector<int> ans = findSpiral(root);
+for(auto i:ans)
+cout<<i<<" ";
 return 0;
 }
 
