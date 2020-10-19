@@ -1,31 +1,46 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define ull unsigned long long
-#define rs reserve
-#define pb push_back
-#define ff first
-#define ss second
-#define mp make_pair
-#define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
-#define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
-#define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
-#define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
-#define mod 1000000007
-
 int main()
-{
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-//}
-string s = "pramod";
-cout<<s.substr(4,1);
-return 0;
-}
-
-
+ {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int p,i,j,n;
+        cin>>n;
+       char s[n];
+        queue<char>q;
+        for(i=0;i<n;i++)
+        cin>>s[i];
+        int a[27]={0};
+        for(i=0;i<n;i++)
+        {
+            p=s[i]-96;
+            if(a[p]==0)
+            q.push(s[i]);
+            a[p]=a[p]+1;
+            while(1)
+            {
+                if(q.empty()!=1)
+                {
+                    j=q.front()-96;
+                    if(a[j]==1)
+                	{
+                   		cout<<q.front()<<" ";
+                   		break;
+                	}
+                	else
+                	q.pop();
+                }
+                else
+                {
+                    cout<<-1<<" ";
+                    break;
+                }
+                
+            }
+        }
+        cout<<endl;
+    }
+	return 0;
+ }
