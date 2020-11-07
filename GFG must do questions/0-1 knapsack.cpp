@@ -18,32 +18,39 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-	int n;
-	cin>>n;
-	int a[n], dp[n];
-	fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
+{
+	int n,w;
+	cin>>n>>w;
+	int weight[n+1],val[n+1];
+	fi(i,1,n+1,1)
+	cin>>val[i];
+	fi(i,1,n+1,1)
+	cin>>weight[i];
+	int dp[n+1][w+1];
+	fi(i,0,n+1,1)
 	{
-		cin>>a[i];
-		dp[i] = a[i];
-	}
-	int ans = INT_MIN;
-	for(int i = 1;i<n;i++)
-	{
-		for(int j = 0;j<i;j++)
+		fi(j,0,w+1,1)
 		{
-			if(a[i] > a[j])
+			if(i==0 or j==0)
 			{
-				dp[i] = max(dp[i] , dp[j] + a[i]);
+				dp[i][j] = 0;
+				continue;
 			}
-			ans = max(ans,dp[i]);
+			else  if(j >= weight[i])
+			{
+				dp[i][j] = max(dp[i-1][j],val[i] + dp[i-1][j-weight[i]]);
+			}
+			else
+			{
+				dp[i][j] = dp[i-1][j]; // weight is more than the capacity of bag
+			}
 		}
 	}
-	cout<<ans<<"\n";
-//}
+	cout<<dp[n][w]<<"\n";
+}
 return 0;
 }
 

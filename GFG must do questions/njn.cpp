@@ -18,32 +18,29 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-	int n;
-	cin>>n;
-	int a[n], dp[n];
-	fi(i,0,n,1)
-	{
-		cin>>a[i];
-		dp[i] = a[i];
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n; cin>>n;
+    ll a[n],prefix[n];
+    ll sum=0;
+    ll o=0;
+    fi(i,0,n,1){
+        cin>>a[i];
+        sum+=a[i];
+        o = (o | a[i]);
+    }
+    prefix[0] = a[0];
+    fi(i,1,n,1)
+    {
+    	prefix[i] = prefix[i-1]+a[i];
 	}
-	int ans = INT_MIN;
-	for(int i = 1;i<n;i++)
-	{
-		for(int j = 0;j<i;j++)
-		{
-			if(a[i] > a[j])
-			{
-				dp[i] = max(dp[i] , dp[j] + a[i]);
-			}
-			ans = max(ans,dp[i]);
-		}
-	}
-	cout<<ans<<"\n";
-//}
+    ll orsub = sum | o;
+    fi(i,0,n,1) 
+	orsub = (orsub | prefix[i]);
+    cout<<orsub<<"\n";
+}
 return 0;
 }
 

@@ -18,32 +18,19 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-	int n;
-	cin>>n;
-	int a[n], dp[n];
-	fi(i,0,n,1)
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n;
+	cin>>n;;
+	if(n&1)
 	{
-		cin>>a[i];
-		dp[i] = a[i];
+		cout<<0<<" "<<n<<"\n";
 	}
-	int ans = INT_MIN;
-	for(int i = 1;i<n;i++)
-	{
-		for(int j = 0;j<i;j++)
-		{
-			if(a[i] > a[j])
-			{
-				dp[i] = max(dp[i] , dp[j] + a[i]);
-			}
-			ans = max(ans,dp[i]);
-		}
-	}
-	cout<<ans<<"\n";
-//}
+	else
+	cout<<n/2<<" "<<n/2<<"\n";
+}
 return 0;
 }
 

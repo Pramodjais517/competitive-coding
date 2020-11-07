@@ -14,36 +14,29 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+class Pair{
+	int a,b;
+	public:
+		Pair(int a,int b)
+		{
+			this->a  = a;
+			this->b = b;
+		}
+		int second()
+		{
+			return b;
+		}
+		int first()
+		{
+			return a;
+		}
+};
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
-	int n;
-	cin>>n;
-	int a[n], dp[n];
-	fi(i,0,n,1)
-	{
-		cin>>a[i];
-		dp[i] = a[i];
-	}
-	int ans = INT_MIN;
-	for(int i = 1;i<n;i++)
-	{
-		for(int j = 0;j<i;j++)
-		{
-			if(a[i] > a[j])
-			{
-				dp[i] = max(dp[i] , dp[j] + a[i]);
-			}
-			ans = max(ans,dp[i]);
-		}
-	}
-	cout<<ans<<"\n";
-//}
+Pair p(5,6);
+cout<<p.first()<<' '<<p.second();
 return 0;
 }
 

@@ -13,37 +13,44 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
+int dp[100001];
+
+
+int solve(int a[],int ind,int n)
+{
+	if(ind >= n-1)
+	return 0;
+	//before it traverse each possibility
+	int ans = INT_MAX;
+	if(dp[ind])
+	return dp[ind];
+	for(int i=1;i<=a[ind];i++)
+	{
+		int poss = solve(a,i + ind,n);
+		ans = min(ans,poss);
+	}
+	dp[ind] = ans+1;
+	return dp[ind];
+}
 
 int main()
 {
-ios_base::sync_with_stdio(false);
+ios_base::sync_with_stdio(false);	
 cin.tie(NULL);
-//ll t;
-//cin>>t;
-//while(t--)
-//{
+ll t;
+cin>>t;
+while(t--)
+{
 	int n;
 	cin>>n;
-	int a[n], dp[n];
-	fi(i,0,n,1)
+	int a[n];
+	for(int i=0;i<n;i++)
 	{
 		cin>>a[i];
-		dp[i] = a[i];
 	}
-	int ans = INT_MIN;
-	for(int i = 1;i<n;i++)
-	{
-		for(int j = 0;j<i;j++)
-		{
-			if(a[i] > a[j])
-			{
-				dp[i] = max(dp[i] , dp[j] + a[i]);
-			}
-			ans = max(ans,dp[i]);
-		}
-	}
-	cout<<ans<<"\n";
-//}
+	memset(dp,0,sizeof(dp));
+	cout<<solve(a,0,n)<<"\n";
+}
 return 0;
 }
 

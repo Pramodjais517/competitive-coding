@@ -14,73 +14,79 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-class Node
-{
+class Node{
+	
 	public:
-		int item;
-		Node* next;	
-	Node(int a)
+		int data;
+	Node *next;
+	Node(int data)
 	{
-		this->item = a;
+		this->data = data;
 		this->next = NULL;
 	}
 };
-
-//class List
+//void insertBegin(int data)
 //{
-//	private:
-//		Node* head;
-//	public:
-//		List()
-//		{
-//			this->head = NULL;
-//		}
-//	void insert(int a)
-//	{
-//		Node* node = new Node(a);
-//		node->next = head;
-//		head = node;
-//	}
-//	void show()
-//	{
 //		Node* temp = head;
-//		if(temp == NULL)
-//		{
-//			cout<<"List is empty\n";
-//		}
-//		while(temp != NULL)
-//		{
-//			cout<<temp->item<<"->";
-//			temp = temp->next;
-//		}
-//		cout<<"NULL";
-//	}
-//};
+//		Node* node = new Node(data);
+//		node->next = temp;
+//		head = node;
+//}
 
-void insert(Node** head,int a)
+void insertEnd(int data,Node* &head)
 {
-	Node* node = new Node(a);
-	node->next = *head;
-	*head = node;
-}
-void show(Node* head)
+	if(head==NULL)
+	{
+		Node* node = new Node(data);
+		head = node;
+		return;
+	}
+	Node* temp = head;
+	while(temp->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	Node* node = new Node(data);
+	temp->next = node;	
+}	
+void display(Node* head)
 {
 	while(head!=NULL)
 	{
-		cout<<head->item<<"->";
-		head=head->next;
+		cout<<head->data<<" ";
+		head = head->next;
 	}
-	cout<<"NULL\n";
+	cout<<"\n";
 }
+
+Node* reverse(Node* head)
+{
+	Node* prev = NULL, *curr = head,*next = NULL;
+	while(curr!=NULL)
+	{
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	return prev;
+}
+
 int main()
 {
-	Node* head = NULL;
-	insert(&head,5);
-	insert(&head,6);
-	show(head);
-	insert(&head,7);
-	insert(&head,9);
-	show(head);
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+Node* head = NULL;
+int in;
+while(1)
+{
+	cin>>in;
+	if(in == -1)
+	break;
+	insertEnd(in,head);
+}
+head = reverse(head);
+display(head);
 return 0;
 }
 
