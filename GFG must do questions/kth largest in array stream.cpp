@@ -18,8 +18,24 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+ll t;
+cin>>t;
+while(t--)
+{
+	int n,k;
+	cin>>k>>n;
+	int a[n];
+	for(int i=0;i<n;i++)
+	cin>>a[i];
+	sort(a,a+n);
+	for(int i=0;i<n;i++)
+	{
+		if(i< (k-1))
+		cout<<-1<<" ";
+		else
+		cout<<a[i-k + 1]<<" ";
+	}
+}
 return 0;
 }
 

@@ -18,7 +18,51 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n,w;
+	cin>>n>>w;
+	ll a[n];
+	ll lower = (ll)ceil(w/2.0), ind =-1;
+	for(ll i=0;i<n;i++){
+	cin>>a[i];
+	if(a[i] >= lower and a[i] <= w)	
+		ind = i+1;
+	}
+	if(ind!=-1)
+	{
+		cout<<1<<"\n";
+		cout<<ind<<"\n";
+	}
+	else
+	{
+	ll sum = 0;
+	set<ll> s;
+	for(ll i=0;i<n;i++)
+	{
+		sum+=a[i];
+		s.insert(i+1);
+		if(sum>w)
+		{
+			sum-=a[i];
+			s.erase(i+1);
+		}
+		if(sum >= lower)
+		break;	
+	}
+	if(s.size()==0 or sum < lower)
+	{
+		cout<<-1<<"\n";
+		continue;
+	}
+	cout<<s.size()<<'\n';
+	for(auto i:s)
+	cout<<i<<" ";
+	cout<<"\n";
+}
+}
 	
 return 0;
 }

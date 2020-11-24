@@ -18,8 +18,14 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
+map<int,int> mp;
+
+cout<<mp.size();
 return 0;
 }
 

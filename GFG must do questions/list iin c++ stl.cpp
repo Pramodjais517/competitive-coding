@@ -18,8 +18,19 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+int n;
+cin>>n;
+list<int> l;
+int val;
+for(int i=0;i<n;i++)
+{
+	cin>>val;
+	l.push_front(val);
+}
+for(auto i=l.begin();i!=l.end();i++)
+{
+	cout<<*i<<" ";
+}
 return 0;
 }
 

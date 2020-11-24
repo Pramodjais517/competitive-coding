@@ -18,8 +18,43 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+ll t;
+cin>>t;
+while(t--)
+{
+	string s;
+	cin>>s;
+	if(s.length()==0)
+	{
+		cout<<0<<"\n";
+		continue;
+	}
+	bool sq = 0,sm = 0;int ans =0;
+	for(int i=0;i<s.length();i++)
+	{
+		if(s[i] == '(')
+		sm=1;
+		if(s[i] == ')')
+		{
+			if(sm)
+			{
+				ans++;
+				sm=0;
+			}
+		}
+		if(s[i]=='[')
+		sq=1;
+		if(s[i]==']')
+		{
+			if(sq)
+			{
+				ans++;
+				sq =0 ;
+			}
+		}
+	}
+	cout<<ans<<"\n";
+}
 return 0;
 }
 

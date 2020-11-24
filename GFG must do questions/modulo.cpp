@@ -13,13 +13,19 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
+#define s "pramod"
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+//ll t;
+//cin>>t;
+//while(t--)
+//{
+//}
+string s = "hello";
+cout<<s<<'\n';
 return 0;
 }
 

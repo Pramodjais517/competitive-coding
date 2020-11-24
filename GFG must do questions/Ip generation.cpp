@@ -14,12 +14,13 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+string s = "Pramod";
+cout<<s.substr(3,3);
 return 0;
 }
 

@@ -18,8 +18,20 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
+ll t;
+cin>>t;
+while(t--)
+{
+	ll x,y;
+	cin>>x>>y;
+	if(y>x)
+	swap(x,y);
+	int ans = y*2 + (x-y)*2;
+	if(x!=y) 
+	ans-=1;
+	cout<<max(0,ans)<<"\n";
 	
+}
 return 0;
 }
 

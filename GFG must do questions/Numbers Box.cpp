@@ -18,8 +18,29 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+ll t;
+cin>>t;
+while(t--)
+{
+	ll n,m;
+	cin>>n>>m;
+	int neg = 0,sum = 0,mn = 101,val;
+	fi(i,0,n,1)
+	{
+		fi(j,0,m,1)
+		{
+			cin>>val;
+			if(val < 0)
+			neg++;
+			sum += abs(val);
+			mn  = min(mn,abs(val));
+		}
+	}
+	if(neg&1)
+	cout<<sum-2*mn<<"\n";
+	else
+	cout<<sum<<"\n";
+}
 return 0;
 }
 

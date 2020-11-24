@@ -18,8 +18,8 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-set<vector<int>>s;
-	
+string s = 123 + ",";
+cout<<s<<"\n";
 return 0;
 }
 
