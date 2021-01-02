@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -16,19 +14,45 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+void reverse(int arr[],int l,int r)
+{
+	for(int i=l;i<=r/2;i++)
+	{
+		swap(arr[i],arr[r-i+l]);
+	}
+}
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+int n;
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	cin>>arr[i];
 }
+int size = n-1;
+while(size>0)
+{
+	int ind = 0;
+	int mx = INT_MIN;
+	for(int i = 0;i<=size;i++)
+	{
+		if(arr[i] > mx)
+		{
+			mx = arr[i];
+			ind  = i;
+		}
+	}
+	reverse(arr,0,ind);
+	reverse(arr,0,size);
+	size--;
+}
+fi(i,0,n,1)
+cout<<arr[i]<<" ";
 return 0;
 }
+
 

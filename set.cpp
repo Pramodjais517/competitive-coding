@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -20,15 +18,13 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
-{
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
-}
+set<int> s;
+s.insert(1);
+s.insert(5);
+s.insert(10);
+for(auto i:s)
+cout<<i<<" ";
 return 0;
 }
+
 

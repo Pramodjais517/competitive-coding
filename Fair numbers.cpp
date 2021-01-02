@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -16,6 +14,20 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+bool Fair(ll n)
+{
+	ll temp =  n;
+	while(temp)
+	{
+		int dig = temp%10;
+		if(dig!=0)
+		if(n%dig!=0)
+		return false;
+		temp/=10;
+	}
+	return true;
+}
+
 int main()
 {
 ios_base::sync_with_stdio(false);
@@ -24,11 +36,13 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	ll n;
+	cin>>n;
+	while(!Fair(n))
+	n++;
+	cout<<n<<"\n";
 }
 return 0;
 }
+
 

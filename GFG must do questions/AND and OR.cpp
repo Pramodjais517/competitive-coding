@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -24,11 +22,14 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	ll a,b,k;
+	cin>>a>>b>>k;
+	if(k == 1)
+	cout<<(a&b)<<"\n";
+	else
+	cout<<b<<"\n";
 }
 return 0;
 }
+
 

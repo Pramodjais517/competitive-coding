@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -16,19 +14,36 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+bool comp(pair<int,int> a, pair<int,int> b)
+{
+	if(a.second == b.second)
+	return a.first > b.first;
+	return a.second > b.second;
+}
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+int n;
+cin>>n;
+map<int,int> mp;int val;
+for(int i=0;i<n;i++)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	cin>>val;
+	mp[val]++;
+}
+vector<pair<int,int>> arr;
+for(auto i:mp)
+{
+	arr.push_back(i);
+}
+sort(arr.begin(),arr.end(),comp);
+for(auto i:arr)
+{
+	cout<<i.first<<" "<<i.second<<"\n";
 }
 return 0;
 }
+
 

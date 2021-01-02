@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -16,6 +14,21 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+int numMusicPlaylists(ll N, ll L, ll K) {
+        int MOD = 1000000007;
+
+        ll dp[L+1][N+1];
+        dp[0][0] = 1;
+        for (ll i = 1; i <= L; ++i)
+            for (ll j = 1; j <= N; ++j) {
+                dp[i][j] += dp[i-1][j-1] * (N-j+1);
+                dp[i][j] += dp[i-1][j] * max(j-K, 0ll);
+                dp[i][j] %= MOD;
+            }
+
+        return (int) dp[L][N];
+    }
+
 int main()
 {
 ios_base::sync_with_stdio(false);
@@ -24,11 +37,12 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	ll n,m,k;
+	cin>>n>>m>>k;
+	cout<<numMusicPlaylists(n,m,k)<<"\n";
+	
 }
 return 0;
 }
+
 

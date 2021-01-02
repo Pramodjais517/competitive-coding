@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -20,15 +18,26 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+string s;
+cin>>s;
+int end = 0,start = 0;
+string temp = "";
+for(int i=0;i<s.length();i++)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	if(s[i]!='x')
+	temp.push_back(s[i]);
+	if(end==0 and temp == "programmer")
+	{
+		end = i;
+	}
+	if(end>0 and s[i]=='p')
+	{
+		start = i;
+		break;
+	}
 }
+cout<<start - end - 1<<"\n";
 return 0;
 }
+
 

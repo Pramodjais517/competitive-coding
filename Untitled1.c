@@ -17,8 +17,9 @@ int main()
   	string s;
   	cin>>s;
   	cout<<s<<"\n";
-  }
+}
 return 0;
 }
+
 
 

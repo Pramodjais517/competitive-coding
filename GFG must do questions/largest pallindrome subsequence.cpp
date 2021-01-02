@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -20,15 +18,41 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
+string s;
+cin>>s;
+int n = s.length();
+int arr[n][n];
+memset(arr,0,sizeof(arr));
+for(int i=0;i<n;i++)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	for(int j=0;j<(n - i); j++)
+	{
+		if(j == i+j)
+		arr[j][i+j] = 1;
+		else if(i==1)
+		{
+			if(s[j] == s[i+j])
+			arr[j][i+j] = 2;
+			else
+			arr[j][i+j] = 1;
+		}
+		else
+		{
+			 if(s[j] == s[i+j])
+			 arr[j][i+j] = arr[j+1][i + j - 1] + 2;
+			 else
+			 arr[j][i+j] = max(arr[j][i+j-1],arr[j+1][i+j]);
+		}
+	}
 }
+fi(i,0,n,1)
+{
+	fi(j,0,n,1)
+	cout<<arr[i][j]<<" ";
+	cout<<"\n";
+}
+//cout<<arr[0][n-1]<<"\n";
 return 0;
 }
+
 

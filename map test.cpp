@@ -1,13 +1,11 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
 #define pb push_back
-#define ff first
-#define ss second
+#define F first
+#define S second
 #define mp make_pair
 #define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
@@ -20,15 +18,13 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-ll t;
-cin>>t;
-while(t--)
-{
-	string mf;
-	cin>>mf;
 
-	cout<<mf<<"\n";
-}
+map<int, int> mp;
+mp[1] = 2;
+mp[3] = 4;
+for(auto i:mp)
+cout<<i.F<<"\n";
 return 0;
 }
+
 

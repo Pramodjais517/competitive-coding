@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-// template starts here
 #define ll long long
 #define ull unsigned long long
 #define rs reserve
@@ -24,11 +22,35 @@ ll t;
 cin>>t;
 while(t--)
 {
-	string mf;
-	cin>>mf;
-
-	cout<<mf<<"\n";
+	int n,k;
+	cin>>n>>k;
+	int arr[n];
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	int ans = INT_MAX;
+	for(int i=0;i<n;i++)
+	{
+		int remove = 0;
+		for(int j = i;j<n;j++)
+		{
+			if(arr[j] < arr[i])
+			{
+				if((arr[i] - arr[j]) > k)
+				remove+= arr[i]- ( k + arr[j]);
+			}
+			else 
+			{
+				if((arr[j] - arr[i]) > k)
+				remove+= arr[j] - (k+arr[i]);
+			}
+		}
+		ans = min(ans,remove);
+	}
+	cout<<ans<<"\n";
 }
 return 0;
 }
+
 
