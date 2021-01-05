@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 // template starts here
 #define ll long long
@@ -15,16 +16,16 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-//int t;cin>>t; while(t--){ }
-string s;
-cin>>s;
-cout<<s<<"\n";
+ll t; cin>>t; while(t--){ }
 return 0;
 }
+
+
+
+
 

@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 // template starts here
 #define ll long long
@@ -16,24 +15,32 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+class base{
+	public:
+		virtual void print(){
+
+		}
+		void show()
+		{
+			cout<<"Helo";
+		}
+};
+
+class derived:public base{
+	public:
+		void print()
+		{
+			cout<<"In derived";
+		}
+};
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-	ll n;
-	cin>>n;
-	vector<int> v(n);
-	for(int i=0;i<n;i++)
-	cin>>v[i];
-	for(auto i:v)
-	cout<<i<<"\n";
-}
+//int t;cin>>t; while(t--){ }
+derived d;
+d.print();
 return 0;
 }
-
-
-
-
 

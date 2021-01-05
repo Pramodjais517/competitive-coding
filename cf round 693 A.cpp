@@ -6,8 +6,8 @@ using namespace std;
 #define ull unsigned long long
 #define rs reserve
 #define pb push_back
-#define F first
-#define S second
+#define ff first
+#define ss second
 #define mp make_pair
 #define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
 #define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
@@ -20,20 +20,28 @@ int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-	ll n;
-	cin>>n;
-	vector<int> v(n);
-	for(int i=0;i<n;i++)
-	cin>>v[i];
-	for(auto i:v)
-	cout<<i<<"\n";
+ll t;
+cin>>t;
+while(t--)
+{
+	ll w,h,n;
+	cin>>w>>h>>n;
+	int cnt = 1;
+	while(w%2 == 0 and w>0)
+	{
+		cnt= 2*cnt;
+		w/=2;
+	}
+	while(h%2 ==0 and h>0)
+	{
+		cnt = 2*cnt;
+		h/=2;
+	}
+	if(cnt >= n)
+		cout<<"Yes\n";
+	else
+		cout<<"No\n";
 }
 return 0;
 }
-
-
-
-
 

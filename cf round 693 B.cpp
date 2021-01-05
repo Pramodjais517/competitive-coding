@@ -24,10 +24,37 @@ ll t;
 cin>>t;
 while(t--)
 {
-    cout<<"hello";
+    ll n;cin>>n;
+    ll sum = 0,a,one = 0, two = 0;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a;
+        if(a == 1)
+            one++;
+        else
+            two++;
+        sum+=a;
+    }
+    if(one ==0)
+    {
+        if(sum%2 == 0 and n%2 ==0)
+            cout<<"Yes\n";
+        else
+            cout<<"No\n";
+    }
+    else if(two == 0 and n%2 ==0)
+    {
+        cout<<"Yes\n";
+    }
+    else
+    {
+        if(sum %2 == 0)
+            cout<<"Yes\n";
+        else
+            cout<<"No\n";
+    }
 }
 return 0;
 }
-
 
 

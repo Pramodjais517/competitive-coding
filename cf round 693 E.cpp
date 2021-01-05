@@ -21,14 +21,9 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-	ll n;
-	cin>>n;
-	vector<int> v(n);
-	for(int i=0;i<n;i++)
-	cin>>v[i];
-	for(auto i:v)
-	cout<<i<<"\n";
+ll t; cin>>t; while(t--)
+{
+   cout<<"Hello";
 }
 return 0;
 }
