@@ -16,25 +16,24 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
-int main()
-{
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
 
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+int main() {
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int T;
+    cin >> T;
+    while(T--)
+    {
+        ll n; cin>>n;
+        ll j = 9;
+        while(n--)
+        {
+            
+            cout<<j;
+            j=(j+10-1)%10;
+        }
+        cout<<"\n";
+    }
+	return 0;
 }
-return 0;
-}
-
-
-
-
-

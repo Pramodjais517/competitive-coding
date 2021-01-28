@@ -21,16 +21,19 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
-}
+ll t; cin>>t; while(t--){
+   ll n,x;
+   cin>>n>>x;
+   ll mn = 0,mx = 0,a;
+   fi(i,0,n,1)
+   {
+       cin>>a;
+       mn+=a;
+       mx+= ceil((double)a/x);
+   }
+   mn = ceil((double) mn/x);
+   cout<<mn<<" "<<mx<<"\n";
+ }
 return 0;
 }
 

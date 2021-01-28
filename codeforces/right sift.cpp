@@ -21,16 +21,9 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
-}
+int temp = 10;
+temp =  temp >>1;
+cout<<temp;
 return 0;
 }
 

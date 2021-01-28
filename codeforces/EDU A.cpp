@@ -22,15 +22,19 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
 ll t; cin>>t; while(t--){ 
+   ll n,d;
+   cin>>n>>d;
+   ll a[n];
+   fi(i,0,n,1)
+   cin>>a[i];
+   sort(a,a+n);
+   bool f =0;
+   if( a[0]+a[1] <= d or a[n-1] <= d)
+   cout<<"YES\n";
+   else
+   cout<<"NO\n";    
+   }
 
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
-}
 return 0;
 }
 

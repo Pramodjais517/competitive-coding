@@ -21,16 +21,15 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+string s;cin>>s;
+int n = s.size();
+int num = 1 << n;
+while(num>0)
+{
+    int j = 0;
+    int temp = 
 }
+
 return 0;
 }
 

@@ -21,15 +21,35 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+ll t; cin>>t; while(t--){
+   ll n;
+   cin>>n;
+   string b;
+   vector<int> ans(n);
+   cin>>b;
+   int ps = 0;
+   for(ll i=0;i<n;i++)
+   {
+           if((b[i] - '0') == 0)
+           {
+               if(ps == 0 or ps == 2)
+               ans[i] = 1;
+               else
+               ans[i] = 0;
+           }
+           else
+           {
+               if(ps == 0 or ps == 1)
+               ans[i] = 1;
+               else
+               ans[i] = 0;
+           }
+           ps = (b[i] - '0') + ans[i];
+   }
+   for(auto i:ans)
+   cout<<i;
+   cout<<"\n";
+   
 }
 return 0;
 }

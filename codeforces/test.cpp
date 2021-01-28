@@ -1,45 +1,31 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <bits/stdc++.h>
 #define ll long long
-#define ull unsigned long long
-#define rs reserve
-#define pb push_back
-#define ff first
-#define ss second
-#define mp make_pair
-#define fi(i,s,e,inc) for(auto i=s;i<e;i+=inc)
-#define fie(i,s,e,inc) for(auto i=s;i<=e;i+=inc)
-#define fd(i,s,e,dec) for(auto i=s;i>e;i-=dec)
-#define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
-#define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
-#define mod 1000000007
-class List
-{
-	public:
-	int item;
-	List* next;	
-};
-void insert(List** head, int item)
-{
-	List* node = new List();
-	node->item = item;
-	node->next = *head;
-	*head  = node;
+#define ld long double
+#define endl '\n'
+using namespace std;
+#define T ll t=0;cin>>t;for(ll test=0;test<t;test++)
 
-}
 int main()
 {
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-List* head = NULL;
-insert(&head,5);
-insert(&head,7);
-while(head != NULL)
-{
-	cout<<head->item<<" ";
-	head = head->next;
-}
-return 0;
-}
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    T{
+        ll n;
+       cin>>n;
+       int flag=0;
+       string s="";
+       char ch='9';
+       while(n--){
+        s+=ch;
+       if(ch=='0')
+       flag=1;
+       else if(ch=='9')
+       flag=0;
+       if(flag==0)ch--;
+       else if(flag==1)ch++;
+       }cout<<s<<endl;
 
+    }
 
+    return 0;
+}

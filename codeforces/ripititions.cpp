@@ -21,16 +21,22 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+string s;
+cin>>s;
+int i=0;
+int ans = INT_MIN;
+while(i<s.size())
+{
+    int temp =0;
+    char c = s[i];
+    while(i < s.size() and s[i] == c)
+    {
+        temp++;
+        i++;
+    }
+    ans = max(temp,ans);
 }
+cout<<ans;
 return 0;
 }
 

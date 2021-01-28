@@ -16,20 +16,30 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+bool arr[1000001];
+
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+memset(arr,0,sizeof(arr));
+for(int i=0;i<=1000;i++)
+{
+    for(int j=0;j<=1000;j++)
+    {
+        ll val = 2020*i + 2021 * j;
+        if(val <= 1000006)
+        arr[val] = 1;
+    }
+}
+ll t; cin>>t; while(t--){
+   ll n;
+   cin>>n;
+   if(arr[n])
+   cout<<"Yes\n";
+   else
+   cout<<"No\n";
 }
 return 0;
 }

@@ -22,14 +22,15 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
 ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+   ll n,k;
+   cin>>n>>k;
+   ll ina = k - (n - k);
+   ll temp = ina;
+   ll i = 1;
+   while(temp--)
+   {
+       cout<<i++;
+   }
 }
 return 0;
 }

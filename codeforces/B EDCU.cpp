@@ -22,14 +22,23 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
 ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+      string a,b;
+      cin>>a>>b;
+      if(a<b)
+      swap(a,b);
+      string s1 = a, s2=b;
+      while(s1!=s2 and s1.size()<=400 and s2.size()<=400)
+      {
+          if(s1.size() < s2.size())
+          s1+=a;
+          else
+          s2+=b;
+      }
+      if(s1.size() > 400 or s2.size() > 400)
+      cout<<"-1\n";
+      else
+      cout<<s1<<"\n";
+    
 }
 return 0;
 }

@@ -16,19 +16,36 @@ using namespace std;
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
 
+ll nc2(ll n)
+{
+    return n * (n-1) / 2;
+}
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
+ll t; cin>>t; while(t--){
+    ll a,b,k,x;
+    cin>>a>>b>>k;
+    map<ll,ll> by,gl;
+    fi(i,0,k,1)
+    {
+        cin>>x;
+        by[x]++;
+    }
+    fi(i,0,k,1)
+    {
+        cin>>x;
+        gl[x]++;
+    }
+    ll tot = nc2(k);
+    for(auto i:by)
+    tot -= nc2(i.second);
+    for(auto i:gl)
+    tot -= nc2(i.second);
+    
+    cout<<tot<<"\n";
 
 }
 return 0;

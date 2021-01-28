@@ -21,16 +21,35 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
 ll n;
 cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+ll a[n];
+ll sum=0;
+fi(i,0,n,1)
+{
+cin>>a[i];
+sum+=a[i];
 }
+ll num = 1 << n;
+ll ans = INT_MAX;
+while(num > 0)
+{
+    ll temp = num;
+    ll pos = 0;
+    ll j=0;
+    while(temp > 0 and j<n)
+    {
+        if(temp & 1)
+        {
+            pos+=a[j];
+        }
+        j++;
+        temp = temp >> 1;
+    }
+    ans= min(abs(sum - 2  * pos), ans);
+    num--;
+}
+cout<<ans;
 return 0;
 }
 

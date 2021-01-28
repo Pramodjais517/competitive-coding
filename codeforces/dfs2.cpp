@@ -15,22 +15,37 @@ using namespace std;
 #define fde(i,s,e,dec) for(auto i=s;i>=e;i-=dec)
 #define itr(i,ar) for(auto i=ar.begin();i!=ar.end();i++)
 #define mod 1000000007
+vector<ll> graph[10001];
+bool vis[10001];
+
+void dfs(ll src)
+{
+    cout<<src<<" ";
+    vis[src] = 1;
+    for(auto child:graph[src])
+    {
+        if(vis[child]==0)
+        {
+           dfs(child);     
+        }
+    }
+}
 
 int main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+memset(vis,0,sizeof(vis));
+ll n,m;
+cin>>n>>m;ll a,b;
+while(m--)
+{
+    cin>>a>>b;
+    graph[a].pb(b);
+    graph[b].pb(a);
 }
+dfs(1ll);
 return 0;
 }
 

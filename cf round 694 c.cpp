@@ -21,15 +21,29 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+ll t; cin>>t; while(t--)
+{
+   ll n,m;
+   cin>>n>>m;
+   vector<ll> k(n),c(m);
+   fi(i,0,n,1)
+   cin>>k[i];
+   fi(i,0,m,1)
+   cin>>c[i];
+   ll ans = 0;
+   sort(k.begin(),k.end(),greater<ll>());
+   ll ind = 0;
+   for(int i=0;i<n and ind < n;i++)
+   {
+       if(c[k[i] - 1] > c[ind])
+       {
+           ans+=c[ind];
+           ind++;
+       }
+       else
+       ans+=c[k[i] - 1];
+   }
+   cout<<ans<<"\n";
 }
 return 0;
 }

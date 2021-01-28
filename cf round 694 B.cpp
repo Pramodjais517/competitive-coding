@@ -21,15 +21,27 @@ int main()
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
-ll t; cin>>t; while(t--){ 
-
-ll n;
-cin>>n;
-if(n/2021 >= 0)
-cout<<"Yes\n";
-else
-cout<<"No\n";
-
+ll t; cin>>t; while(t--)
+{
+    ll n, x; cin>>n>>x;
+    vector <pair<ll,ll>> arr;
+    fi(i,0,n,1){
+        ll a;
+        cin>>a;
+       	arr.pb({a, 1});
+    }
+    fi(i,0,n,1){
+        if(arr[i].F % x == 0) {
+      		n++;
+      		arr.pb({arr[i].F/x, x*arr[i].S});
+       	}
+       	else 
+           break;
+    }
+    ll ans = 0;
+    for(auto i:arr) 
+    ans += i.F*i.S;
+    cout<<ans<<endl;
 }
 return 0;
 }
